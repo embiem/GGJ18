@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
   public float jumpSpeed = 8.0F;
   public float gravity = 20.0F;
   public float projectileSpeed = 10.0f;
-	public float projectileSpawnOffset = 0.6f;
+  public float projectileSpawnOffset = 0.6f;
+  public float meleeWeaponSpeed = 10.0f;
+	public float meleeCooldown = 1f;
   public float animationSpeed = 5.0f;
 
 
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
   public Sprite[] DirectionalSpritesRight;
   public Sprite[] DirectionalSpritesFront;
   public Sprite[] DirectionalSpritesBack;
+  public Animator MeleeWeapon;
 
   [Header("Prefabs")]
   public GameObject ProjectilePrefab;
@@ -35,7 +38,8 @@ public class PlayerController : MonoBehaviour
   // privates
   private Vector3 moveDirection = Vector3.zero;
   private Vector3 lookDirection = new Vector3(0f, 0f, -1f);
-  public float spriteAnimIdx = 0;
+  private float spriteAnimIdx = 0;
+	private float lastMeleeTime = 0.0f;
 
   void Start()
   {
@@ -54,6 +58,12 @@ public class PlayerController : MonoBehaviour
       projectile.GetComponent<Projectile>().Fire(lookDirection, projectileSpeed);
     }
 
+    if (Input.GetButton("Fire2") && Time.time - this.lastMeleeTime > meleeCooldown)
+    {
+      this.Melee();
+			this.lastMeleeTime = Time.time;
+    }
+
     if (CharacterController.isGrounded)
     {
       moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -67,9 +77,9 @@ public class PlayerController : MonoBehaviour
     CharacterController.Move(moveDirection * Time.deltaTime);
 
     // Sprite Animation
-    var currentDirection = this.GetCurrentLookDirection();
+    var currentLookDirection = this.GetCurrentLookDirection();
     var currentSprites = DirectionalSpritesFront;
-    switch (currentDirection)
+    switch (currentLookDirection)
     {
       case E_LOOK_DIRECTION.BACK: currentSprites = DirectionalSpritesBack; break;
       case E_LOOK_DIRECTION.RIGHT: currentSprites = DirectionalSpritesRight; break;
@@ -85,6 +95,18 @@ public class PlayerController : MonoBehaviour
       spriteAnimIdx = 0;
     }
     SpriteRenderer.sprite = currentSprites[Mathf.FloorToInt(spriteAnimIdx) % currentSprites.Length];
+  }
+
+  void Melee()
+  {
+		switch (this.GetCurrentLookDirection())
+		{
+			case E_LOOK_DIRECTION.BACK: MeleeWeapon.SetTrigger("back"); break;
+      case E_LOOK_DIRECTION.RIGHT: MeleeWeapon.SetTrigger("right"); break;
+      case E_LOOK_DIRECTION.LEFT: MeleeWeapon.SetTrigger("left"); break;
+      default: MeleeWeapon.SetTrigger("front"); break;
+		}
+		// TODO check for enemy-hit
   }
 
   E_LOOK_DIRECTION GetCurrentLookDirection()
