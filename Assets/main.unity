@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1364,6 +1364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5351dc06d120a264993c6e646721496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelSceneNames:
+  - UltimateStressTest
+  LevelSecondsToPrepare: 0a000000
 --- !u!4 &2018946750
 Transform:
   m_ObjectHideFlags: 0
