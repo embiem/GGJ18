@@ -59,6 +59,11 @@ public class Projectile : MonoBehaviour
       {
         player.TakeDamage(damage);
       }
+      var transmissionTower = hit.gameObject.GetComponent<TransmissionTower>();
+      if (transmissionTower)
+      {
+        transmissionTower.TakeDamage(damage);
+      }
 
       Rigidbody body = hit.collider.attachedRigidbody;
       if (body == null || body.isKinematic)

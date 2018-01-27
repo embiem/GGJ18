@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour
   [Tooltip("How quickly the spawn bursts will increase in number. Lower value means it reaches maximum spawnBurstAmount earlier.")]
   public float SecondsUntilMaxSpawnBurstAmount = 100f;
   public float SpawnCooldown = 10f;
-	public Vector2Int RandomSpawnCooldownRange = new Vector2Int(-2, 2);
+  public Vector2Int RandomSpawnCooldownRange = new Vector2Int(-2, 2);
 
   public int MaxSpawnBurstAmount = 10;
   public Vector2Int RandomBurstAmountRange = new Vector2Int(-1, 1);
@@ -17,24 +17,36 @@ public class EnemySpawn : MonoBehaviour
   [Header("Ref")]
   public Enemy EnemyPrefab;
 
-  private float lastSpawnTime = 0f;
-	private float curSpawnCooldown = 0f;
+  private float curSpawnCooldown = 0f;
 
+  private float timeBucket = 0f;
 
   void Update()
   {
-    if (Time.time - lastSpawnTime > curSpawnCooldown)
+    if (GameManager.instance.RemainingSecondsToPrepare < 0)
     {
-      var curVal = SpawnOverTime.Evaluate(Time.time / SecondsUntilMaxSpawnBurstAmount);
-      var burstAmount = Mathf.CeilToInt(MaxSpawnBurstAmount * curVal) + Random.Range(RandomBurstAmountRange.x, RandomBurstAmountRange.y);
+      timeBucket += Time.deltaTime;
 
-      for (var i = 0; i < burstAmount; i++)
+      if (timeBucket > curSpawnCooldown)
       {
-        Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
-      }
+        timeBucket -= curSpawnCooldown;
 
-      lastSpawnTime = Time.time;
-			curSpawnCooldown = SpawnCooldown + Random.Range(RandomSpawnCooldownRange.x, RandomSpawnCooldownRange.y);
+        var curVal = SpawnOverTime.Evaluate(
+          GameManager.instance.SecondsSinceStartOfTransmission / SecondsUntilMaxSpawnBurstAmount
+        );
+        var burstAmount =
+          Mathf.CeilToInt(MaxSpawnBurstAmount * curVal) +
+          Random.Range(RandomBurstAmountRange.x, RandomBurstAmountRange.y);
+
+        for (var i = 0; i < burstAmount; i++)
+        {
+          Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+        }
+
+        curSpawnCooldown =
+          SpawnCooldown +
+          Random.Range(RandomSpawnCooldownRange.x, RandomSpawnCooldownRange.y);
+      }
     }
   }
 }

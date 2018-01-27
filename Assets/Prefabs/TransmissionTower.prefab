@@ -39,6 +39,9 @@ GameObject:
   - component: {fileID: 4800993452175898}
   - component: {fileID: 33387319561648338}
   - component: {fileID: 23583909468178534}
+  - component: {fileID: 114503028139949578}
+  - component: {fileID: 208563993665338312}
+  - component: {fileID: 65499004058393604}
   m_Layer: 0
   m_Name: TransmissionTower
   m_TagString: Untagged
@@ -53,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988234931828248}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.1707218, y: 3.410729e-17, z: -1.5360557}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4827154964059400}
@@ -155,6 +158,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988234931828248}
   m_Mesh: {fileID: 4300000, guid: 99346af10d1a0e24d86d0ad8f19bf0fd, type: 3}
+--- !u!65 &65499004058393604
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988234931828248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06661724, y: 0.062154733, z: 0.22}
+  m_Center: {x: 0, y: 0.0022312503, z: 0.025647748}
 --- !u!114 &114127188549562160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,3 +182,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!114 &114503028139949578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988234931828248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36d599ce5672c649ad9ea0464f89e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyShouldIgnore: 0
+  health: 30
+  pointsPerSecond: 1
+  RotateScript: {fileID: 114127188549562160}
+--- !u!208 &208563993665338312
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988234931828248}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.033, y: 0.031000001, z: 0.025}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: 0.026}
+  m_TimeToStationary: 0.5
