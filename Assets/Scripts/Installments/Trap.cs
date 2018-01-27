@@ -39,11 +39,12 @@ public class Trap : MonoBehaviour
         if(rend != null)
         rend.enabled = false;
         yield return new WaitForSeconds(0.5f);
-
-        Destroy(thisObject.gameObject);
-
-        print("WTF!!!");
+        Kill();
 
     }
 
+    void Kill()
+    {
+        DestroyImmediate(thisObject);
+    }
 }
