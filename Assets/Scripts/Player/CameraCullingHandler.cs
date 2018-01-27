@@ -11,8 +11,6 @@ public class CameraCullingHandler : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    Debug.Log(ChangedRenderers.Count);
-
     Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height * 0.75f, 0f));
     Dictionary<Renderer, Renderer> hitRenderers = new Dictionary<Renderer, Renderer>();
     RaycastHit[] hits = Physics.SphereCastAll(ray, 10f, 1000f, SphereCastLayers);
