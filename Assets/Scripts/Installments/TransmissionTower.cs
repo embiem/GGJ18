@@ -54,6 +54,8 @@ public class TransmissionTower : Installment
     var transTowers = FindObjectsOfType<TransmissionTower>();
     if (transTowers.Length == 1) {
       GameManager.instance.OnAllTransmissionTowersDied();
+    } else {
+      GameManager.instance.OnTransmissionTowerDestroyed();
     }
     Instantiate(BrokenTransmissionTowerPrefab, transform.position, transform.rotation);
     Destroy(this.gameObject);
