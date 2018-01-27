@@ -398,9 +398,13 @@ MonoBehaviour:
   defenseItem:
   - {fileID: 1762482329300558, guid: 1a26dec7903519e4eb92db7caa288b2e, type: 2}
   - {fileID: 1229576974970834, guid: a2f135f476f0a5d46b2efb1691b2c72c, type: 2}
+  defenseItemNames:
+  - Laser Turret
+  - Exploding Trap
   maxItems: 100
   canPlaceItem: 1
   itemCountDisplay: {fileID: 0}
+  itemSelectionDisplay: {fileID: 0}
 --- !u!120 &120514345107042226
 LineRenderer:
   m_ObjectHideFlags: 1

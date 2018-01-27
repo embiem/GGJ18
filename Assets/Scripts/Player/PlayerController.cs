@@ -96,12 +96,6 @@ public class PlayerController : MonoBehaviour
       }
     }
 
-    if (Input.GetButton("Fire2") && Time.time - this.lastMeleeTime > meleeCooldown)
-    {
-      this.Melee();
-      this.lastMeleeTime = Time.time;
-    }
-
     if (CharacterController.isGrounded)
     {
       moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
