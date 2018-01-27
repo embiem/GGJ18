@@ -13,21 +13,48 @@ public class GameManager : MonoBehaviour
   public int[] LevelSecondsToPrepare = new int[0];
   public float[] LevelTransmissionPointsToWin = new float[0];
 
-	private int curLevelIndex = 0;
+  [Header("refs")]
+  public AudioSource AudioStartingSoon;
+  public AudioSource AudioStartingTenSec;
+  public AudioSource AudioStartingNow;
+  public AudioSource AudioTowerDestroyed;
+  public AudioSource AudioPlayerDied;
+  public AudioSource AudioAllTransmissionTowersDestroyed;
+  public AudioSource AudioSuccessful;
+
+
+  private int curLevelIndex = 0;
   private float levelStartTime = 0f;
 
+  private bool playedTenSecAudio = false;
+  private bool playedStartNowAudio = false;
   private float transmissionPoints = 0;
   private bool gameOver = false;
   private string gameOverReason = "";
 
-  public float RemainingSecondsToPrepare {
-    get {
-      return LevelSecondsToPrepare[CurLevelIndex] - (Time.time - levelStartTime);
+  public float RemainingSecondsToPrepare
+  {
+    get
+    {
+      var calcedVal = LevelSecondsToPrepare[CurLevelIndex] - (Time.time - levelStartTime);
+      if (!playedTenSecAudio && calcedVal < 10)
+      {
+        AudioStartingTenSec.Play();
+        playedTenSecAudio = true;
+      }
+      if (!playedStartNowAudio && calcedVal < 0)
+      {
+        AudioStartingNow.Play();
+        playedStartNowAudio = true;
+      }
+      return calcedVal;
     }
   }
 
-  public float SecondsSinceStartOfTransmission {
-    get {
+  public float SecondsSinceStartOfTransmission
+  {
+    get
+    {
       return RemainingSecondsToPrepare * -1;
     }
   }
@@ -41,9 +68,11 @@ public class GameManager : MonoBehaviour
 
     set
     {
-      if (value >= LevelTransmissionPointsToWin[CurLevelIndex]) {
+      if (!GameOver && value >= LevelTransmissionPointsToWin[CurLevelIndex])
+      {
         this.GameOverReason = "Transmission successfully completed!";
         this.GameOver = true;
+        AudioSuccessful.Play();
       }
       transmissionPoints = value;
     }
@@ -93,7 +122,11 @@ public class GameManager : MonoBehaviour
     if (!instance)
     {
       instance = this;
-			DontDestroyOnLoad(this.gameObject);
+      DontDestroyOnLoad(this.gameObject);
+
+      if (SceneManager.GetActiveScene().name.ToLower() != "menu") {
+        AudioStartingSoon.Play();
+      }
     }
     else
     {
@@ -101,28 +134,40 @@ public class GameManager : MonoBehaviour
     }
   }
 
-	public void LoadLevel(int levelIndex)
-	{
-		this.CurLevelIndex = levelIndex;
-		SceneManager.LoadScene(LevelSceneNames[levelIndex]);
+  public void LoadLevel(int levelIndex)
+  {
+    this.CurLevelIndex = levelIndex;
+    SceneManager.LoadScene(LevelSceneNames[levelIndex]);
     this.levelStartTime = Time.time;
     this.transmissionPoints = 0;
     this.GameOver = false;
-	}
+    this.playedTenSecAudio = false;
+    this.playedStartNowAudio = false;
+    AudioStartingSoon.Play();
+  }
+
+  public void OnTransmissionTowerDestroyed()
+  {
+    AudioTowerDestroyed.Play();
+  }
 
   public void OnAllTransmissionTowersDied()
   {
-    if (!this.GameOver) {
+    if (!this.GameOver)
+    {
       this.GameOverReason = "All transmission towers destroyed!";
       this.GameOver = true;
+      AudioAllTransmissionTowersDestroyed.Play();
     }
   }
 
   public void OnPlayerDied()
   {
-    if (!this.GameOver) {
+    if (!this.GameOver)
+    {
       this.GameOverReason = "You died!";
       this.GameOver = true;
+      AudioPlayerDied.Play();
     }
   }
 }
