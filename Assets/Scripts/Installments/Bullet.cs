@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour {
 
     public float lifeTime = 5f;
     Rigidbody rb;
-    float start = 0;
 
 	// Use this for initialization
 	void Start () {
