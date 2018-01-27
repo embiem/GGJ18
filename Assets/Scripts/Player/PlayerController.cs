@@ -46,6 +46,19 @@ public class PlayerController : MonoBehaviour
   private float lastMeleeTime = 0.0f;
   private float lastProjectileTime = 0.0f;
 
+  public Vector3 LookDirection
+  {
+    get
+    {
+      return lookDirection;
+    }
+
+    set
+    {
+      lookDirection = value;
+    }
+  }
+
   void Start()
   {
   }
@@ -57,10 +70,10 @@ public class PlayerController : MonoBehaviour
     {
       var projectile = GameObject.Instantiate(
         ProjectilePrefab,
-        transform.position + CharacterController.center + lookDirection * projectileSpawnOffset,
-        Quaternion.LookRotation(lookDirection, Vector3.up)
+        transform.position + CharacterController.center + LookDirection * projectileSpawnOffset,
+        Quaternion.LookRotation(LookDirection, Vector3.up)
       );
-      projectile.GetComponent<Projectile>().Fire(lookDirection, projectileSpeed);
+      projectile.GetComponent<Projectile>().Fire(LookDirection, projectileSpeed);
       this.lastProjectileTime = Time.time;
     }
 
@@ -128,8 +141,8 @@ public class PlayerController : MonoBehaviour
 
     // check for enemy-hit
     RaycastHit hit;
-    Debug.DrawRay(transform.position, this.lookDirection * this.meleeRange, Color.green, 3, false);
-    if (Physics.Raycast(transform.position, this.lookDirection, out hit, this.meleeRange))
+    Debug.DrawRay(transform.position, this.LookDirection * this.meleeRange, Color.green, 3, false);
+    if (Physics.Raycast(transform.position, this.LookDirection, out hit, this.meleeRange))
     {
       var enemy = hit.collider.GetComponent<Enemy>();
       if (enemy)
@@ -141,13 +154,13 @@ public class PlayerController : MonoBehaviour
 
   E_LOOK_DIRECTION GetCurrentLookDirection()
   {
-    if (lookDirection.x != 0)
+    if (LookDirection.x != 0)
     {
-      return lookDirection.x > 0 ? E_LOOK_DIRECTION.RIGHT : E_LOOK_DIRECTION.LEFT;
+      return LookDirection.x > 0 ? E_LOOK_DIRECTION.RIGHT : E_LOOK_DIRECTION.LEFT;
     }
-    else if (lookDirection.z != 0)
+    else if (LookDirection.z != 0)
     {
-      return lookDirection.z > 0 ? E_LOOK_DIRECTION.BACK : E_LOOK_DIRECTION.FRONT;
+      return LookDirection.z > 0 ? E_LOOK_DIRECTION.BACK : E_LOOK_DIRECTION.FRONT;
     }
     // fallback
     return E_LOOK_DIRECTION.FRONT;

@@ -15,8 +15,14 @@ public class PlaceItem : MonoBehaviour
     public Text itemCountDisplay;
 
     GameObject currentItem;
+    PlayerController player;
 
     int itemCount = 0;
+
+    void Start()
+    {
+        this.player = FindObjectOfType<PlayerController>();
+    }
 
     private void FixedUpdate()
     {
@@ -32,7 +38,7 @@ public class PlaceItem : MonoBehaviour
                 if (itemCount < maxItems && currentItem != null) {
                     PlaceDefenseItem(currentItem);
                     itemCount++;
-            
+
 
                     itemCountDisplay.text = "Available Items " + (maxItems - itemCount).ToString();
                 }
@@ -54,7 +60,7 @@ public class PlaceItem : MonoBehaviour
         }
 
         if (item != null) {
-            Instantiate(item, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+            Instantiate(item, transform.position + this.player.LookDirection, Quaternion.identity);
         }
 
     }

@@ -2,59 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class Trap : Installment
 {
-    public Animator explosion;
+  public Animator explosion;
 
-    public GameObject thisObject;
+  public GameObject thisObject;
 
-    Renderer rend;
+  Renderer rend;
 
-    Collider col;
+  Collider col;
 
 
 
-    private void Start()
+  new void Start()
+  {
+    base.Start();
+    rend = this.gameObject.GetComponent<Renderer>();
+    col = this.gameObject.GetComponent<Collider>();
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.GetComponent<Enemy>())
     {
-       rend = this.gameObject.GetComponent<Renderer>();
-        col = this.gameObject.GetComponent<Collider>();
+      var e = other.GetComponent<Enemy>();
+      e.TakeDamage(3);
+
+      this.StartCoroutine("DeactivateTrap");
+    }
+  }
+
+  IEnumerator DeactivateTrap()
+  {
+
+    var shaker = FindObjectOfType<ScreenShake>();
+
+    if (shaker != null)
+    {
+      shaker.StartScreenShake();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Enemy>())
-        {
-            var e = other.GetComponent<Enemy>();
-            e.TakeDamage(3);
+    this.explosion.Play("Expl");
 
-            this.StartCoroutine("DeactivateTrap");
-        }
-    }
+    if (col != null)
+      col.enabled = false;
 
-    IEnumerator  DeactivateTrap()
-    {
+    if (rend != null)
+      rend.enabled = false;
+    yield return new WaitForSeconds(0.5f);
+    Kill();
 
-        var shaker = FindObjectOfType<ScreenShake>();
+  }
 
-        if (shaker != null)
-        {
-            shaker.StartScreenShake();
-        }
-
-        this.explosion.Play("Expl");
-
-        if(col != null)
-        col.enabled = false;
-
-        if(rend != null)
-        rend.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        Kill();
-
-    }
-
-    void Kill()
-    {
-        DestroyImmediate(thisObject);
-    }
+  void Kill()
+  {
+    DestroyImmediate(thisObject);
+  }
 }
