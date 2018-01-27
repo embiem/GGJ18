@@ -11,6 +11,7 @@ public class Turret : Installment
 
   public float reloadTime = 0.2f;
   public float projectileSpeed = 8f;
+  public float projectileRange = 20f;
 
   public Projectile projectile;
 
@@ -57,7 +58,7 @@ public class Turret : Installment
       if (Time.time - lastShotTime > reloadTime)
       {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up * -1, out hit))
+        if (Physics.Raycast(transform.position, transform.up * -1, out hit, this.projectileRange))
         {
           if (hit.collider.gameObject == currentTarget)
           {
@@ -89,7 +90,7 @@ public class Turret : Installment
     {
       var curEnemy = Enemy.ListOfEnemies[i];
       var distance = Vector3.Distance(transform.position, curEnemy.transform.position);
-      if (distance < nearestEnemyDistance)
+      if (distance < nearestEnemyDistance * Random.Range(0.85f, 1.15f)) // some randomness
       {
         nearestEnemyDistance = distance;
         nearestEnemy = curEnemy;
