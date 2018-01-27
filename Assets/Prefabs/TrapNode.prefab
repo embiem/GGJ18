@@ -35,10 +35,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4252530309822294}
   - component: {fileID: 33210298221235650}
-  - component: {fileID: 136924766005650088}
   - component: {fileID: 23624202381429756}
   - component: {fileID: 54573107066458238}
   - component: {fileID: 114536879050792080}
+  - component: {fileID: 135848865267785282}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -69,14 +69,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256268419568892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 4574428845870572}
   m_Father: {fileID: 4562216553640184}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4562216553640184
 Transform:
   m_ObjectHideFlags: 1
@@ -97,13 +97,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534125625006104}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 2}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252530309822294}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &23624202381429756
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -144,7 +144,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256268419568892}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 2bc5528f312601243bb3a1398b9f1e7f, type: 3}
 --- !u!54 &54573107066458238
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 95326057093099182}
   thisObject: {fileID: 1229576974970834}
---- !u!136 &136924766005650088
-CapsuleCollider:
+--- !u!135 &135848865267785282
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -199,10 +199,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.25
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.02
+  m_Center: {x: 0, y: 0.0000000013969842, z: 0.004951392}
 --- !u!212 &212441295104006100
 SpriteRenderer:
   m_ObjectHideFlags: 1
