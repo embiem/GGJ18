@@ -6,11 +6,27 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
   [Header("Balancing Values")]
+  public bool isMeleeArchetype = true;
+  public float projectileRange = 10f;
+  public float projectileSpeed = 10.0f;
+  public float attackCooldown = 1f;
   public int Health = 10;
+
+  [Header("Refs")]
+  public Projectile ProjectilePrefab;
 
   NavMeshAgent agent;
   PlayerController player;
   Installment installmentTarget;
+  float lastAttackTime = 0f;
+
+  public GameObject CurrentTarget
+  {
+    get
+    {
+      return installmentTarget ? installmentTarget.gameObject : player.gameObject;
+    }
+  }
 
   // Use this for initialization
   void Start()
@@ -35,13 +51,25 @@ public class Enemy : MonoBehaviour
       DecideNextInstallment();
     }
 
-    if (this.installmentTarget)
+    if (this.IsInRange())
     {
-      this.agent.destination = this.installmentTarget.transform.position;
+      this.agent.destination = transform.position;
+
+      if (Time.time - lastAttackTime > attackCooldown) {
+        lastAttackTime = Time.time;
+        this.Attack();
+      }
     }
     else
     {
-      this.agent.destination = this.player.transform.position;
+      if (this.installmentTarget)
+      {
+        this.agent.destination = this.installmentTarget.transform.position;
+      }
+      else
+      {
+        this.agent.destination = this.player.transform.position;
+      }
     }
   }
 
@@ -73,6 +101,42 @@ public class Enemy : MonoBehaviour
     this.installmentTarget = nearestInstallment;
   }
 
+  private bool IsInRange()
+  {
+    var distance = Vector3.Distance(CurrentTarget.transform.position, transform.position);
+
+    if (isMeleeArchetype)
+    {
+      return distance < agent.stoppingDistance + 0.5f;
+    }
+    else
+    {
+      RaycastHit hit;
+      if (Physics.Raycast(transform.position, transform.forward, out hit, this.projectileRange))
+      {
+        return hit.collider.gameObject == this.player.gameObject;
+      }
+    }
+
+    return false;
+  }
+
+  private void Attack()
+  {
+    if (isMeleeArchetype)
+    {
+      Debug.Log("Melee Attack");
+    }
+    else
+    {
+      var projectile = GameObject.Instantiate(
+        ProjectilePrefab,
+        transform.position + Vector3.up * 0.5f + transform.forward,
+        Quaternion.LookRotation(transform.forward, Vector3.up)
+      );
+      projectile.GetComponent<Projectile>().Fire(transform.forward, projectileSpeed);
+    }
+  }
 
   private void OnDeath()
   {
