@@ -10,6 +10,7 @@ public class TransmissionTower : Installment
 
 	[Header("Refs")]
 	public Rotate RotateScript;
+  public LineRenderer Laser;
 
 	private float timeBucket = 0f;
 
@@ -17,12 +18,16 @@ public class TransmissionTower : Installment
 	{
 		base.Start();
 		RotateScript.enabled = false;
+    Laser.SetPosition(0, Vector3.zero);
+    Laser.SetPosition(1, Vector3.zero);
 	}
 
   void Update()
   {
 		if (GameManager.instance.RemainingSecondsToPrepare < 0) {
 			if (!RotateScript.enabled) RotateScript.enabled = true;
+
+      Laser.SetPosition(1, Vector3.forward * Mathf.Min(10, GameManager.instance.SecondsSinceStartOfTransmission));
 
 			timeBucket += Time.deltaTime;
 

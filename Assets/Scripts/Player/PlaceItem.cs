@@ -6,77 +6,74 @@ using UnityEngine.UI;
 
 public class PlaceItem : MonoBehaviour
 {
-    public GameObject[] defenseItem;
+  public GameObject[] defenseItem;
+  public string[] defenseItemNames;
 
-    public int maxItems = 5;
+  public int maxItems = 5;
 
-    public bool canPlaceItem;
+  public bool canPlaceItem;
 
-    public Text itemCountDisplay;
+  public Text itemCountDisplay;
+  public Text itemSelectionDisplay;
 
-    GameObject currentItem;
-    PlayerController player;
+  int currentItemIdx = 0;
+  PlayerController player;
 
-    int itemCount = 0;
+  int itemCount = 0;
 
-    void Start()
+  void Start()
+  {
+    if (!itemCountDisplay)
     {
-        this.player = FindObjectOfType<PlayerController>();
+      var itemCounter = GameObject.Find("ItemCounter");
+      itemCountDisplay = itemCounter.GetComponent<Text>();
+    }
+    if (!itemSelectionDisplay)
+    {
+      var itemSelection = GameObject.Find("ItemSelection");
+      itemSelectionDisplay = itemSelection.GetComponent<Text>();
+    }
+    itemSelectionDisplay.text = "Current Selection: " + defenseItemNames[currentItemIdx];
+    this.player = FindObjectOfType<PlayerController>();
+  }
+
+  private void Update()
+  {
+    if (Input.GetButtonDown("Jump"))
+    {
+      currentItemIdx = (currentItemIdx + 1) % defenseItem.Length;
+      itemSelectionDisplay.text = "Current Selection: " + defenseItemNames[currentItemIdx];
     }
 
-    private void FixedUpdate()
+    if (canPlaceItem)
     {
-        if (canPlaceItem)
+      if (Input.GetButtonDown("Fire2"))
+      {
+        if (itemCount < maxItems)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (currentItem == null)
-                {
-                    Debug.LogWarning("No item to set! Choose an item first!");
-                }
-
-                if (itemCount < maxItems && currentItem != null) {
-                    PlaceDefenseItem(currentItem);
-                    itemCount++;
-
-
-                    itemCountDisplay.text = "Available Items " + (maxItems - itemCount).ToString();
-                }
-
-                if (itemCount == maxItems)
-                {
-                    print("no more items can be placed");
-                }
-
-            }
+          PlaceDefenseItem(defenseItem[currentItemIdx]);
+          itemCount++;
+          itemCountDisplay.text = "Available Items " + (maxItems - itemCount).ToString();
         }
-    }
 
-    public void PlaceDefenseItem(GameObject item)
-    {
-        if (item == null)
+        if (itemCount == maxItems)
         {
-            Debug.LogWarning("No item to set! Choose an item first!");
+          print("no more items can be placed");
         }
-
-        if (item != null) {
-            Instantiate(item, transform.position + this.player.LookDirection, Quaternion.identity);
-        }
-
+      }
     }
+  }
 
-    public void SelectItem(int itemID)
+  public void PlaceDefenseItem(GameObject item)
+  {
+    if (item == null)
     {
-        switch (itemID)
-        {
-            case 0:
-               currentItem = defenseItem[0];
-              break;
-
-            case 1:
-                currentItem = defenseItem[1];
-                break;
-
-        }
+      Debug.LogWarning("No item to set! Choose an item first!");
     }
+
+    if (item != null)
+    {
+      Instantiate(item, transform.position + this.player.LookDirection, Quaternion.identity);
+    }
+  }
 }
