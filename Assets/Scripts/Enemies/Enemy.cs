@@ -95,6 +95,8 @@ public class Enemy : MonoBehaviour
     for (var i = 0; i < Installment.ListOfInstallments.Count; i++)
     {
       var curInstallment = Installment.ListOfInstallments[i];
+      if (curInstallment.EnemyShouldIgnore) continue;
+
       var distance = Vector3.Distance(transform.position, curInstallment.transform.position);
       if (distance < nearestInstallmentDistance)
       {
