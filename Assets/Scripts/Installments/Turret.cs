@@ -25,7 +25,11 @@ public class Turret : Installment
 
   Quaternion qTo;
 
-  private void OnTriggerEnter(Collider other)
+    bool targetLocked = false;
+
+
+
+    private void OnTriggerEnter(Collider other)
   {
     if (other.GetComponent<Enemy>())
     {
@@ -48,13 +52,15 @@ public class Turret : Installment
 
   private void Update()
   {
-    if (currentTarget != null)
-    {
-      Vector3 v3T = currentTarget.transform.position - parent.transform.position;
-      v3T.y = parent.transform.position.y;
-      qTo = Quaternion.LookRotation(v3T, Vector3.up);
-      parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
-    }
+
+            if (currentTarget != null)
+            {
+                Vector3 v3T = currentTarget.transform.position - parent.transform.position;
+                v3T.y = parent.transform.position.y;
+                qTo = Quaternion.LookRotation(v3T, Vector3.up);
+                parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
+            }
+
 
   }
 
@@ -66,14 +72,21 @@ public class Turret : Installment
 
   IEnumerator ShootAtTarget(Vector3 enemyPos)
   {
+        RaycastHit hit;
 
-    var spawnedProjectile = Instantiate(
-        projectile,
-        projectileSpawnPoint.transform.position,
-        Quaternion.identity
-    );
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.gameObject == currentTarget) { 
+                var spawnedProjectile = Instantiate(projectile,
+                    projectileSpawnPoint.transform.position,
+                    Quaternion.identity);
 
-    spawnedProjectile.Fire(transform.forward, projectileSpeed);
+                    spawnedProjectile.Fire(transform.forward, projectileSpeed);
+            }
+        
+           
+        }
+
 
     yield return new WaitForSeconds(reloadTime);
 
