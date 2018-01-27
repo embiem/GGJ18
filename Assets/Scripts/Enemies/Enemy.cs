@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
       RaycastHit hit;
       if (Physics.Raycast(transform.position, transform.forward, out hit, this.projectileRange))
       {
-        return hit.collider.gameObject == this.player.gameObject;
+        return hit.collider.gameObject == CurrentTarget;
       }
     }
 
