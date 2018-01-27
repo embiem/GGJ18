@@ -7,7 +7,7 @@ public class Turret : Installment
   [Header("Refs")]
   public GameObject projectileSpawnPoint;
 
-  public int health = 3;
+  public int health = 20;
 
   public float reloadTime = 0.2f;
   public float projectileSpeed = 8f;

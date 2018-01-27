@@ -49,6 +49,11 @@ public class Projectile : MonoBehaviour
       {
         enemy.TakeDamage(damage);
       }
+      var turret = hit.gameObject.GetComponent<Turret>();
+      if (turret)
+      {
+        turret.TakeDamage(damage);
+      }
 
       Rigidbody body = hit.collider.attachedRigidbody;
       if (body == null || body.isKinematic)

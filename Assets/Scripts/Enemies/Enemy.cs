@@ -95,6 +95,8 @@ public class Enemy : MonoBehaviour
     for (var i = 0; i < Installment.ListOfInstallments.Count; i++)
     {
       var curInstallment = Installment.ListOfInstallments[i];
+      if (curInstallment.EnemyShouldIgnore) continue;
+
       var distance = Vector3.Distance(transform.position, curInstallment.transform.position);
       if (distance < nearestInstallmentDistance)
       {
@@ -120,7 +122,7 @@ public class Enemy : MonoBehaviour
       RaycastHit hit;
       if (Physics.Raycast(transform.position, transform.forward, out hit, this.projectileRange))
       {
-        return hit.collider.gameObject == this.player.gameObject;
+        return hit.collider.gameObject == CurrentTarget;
       }
     }
 

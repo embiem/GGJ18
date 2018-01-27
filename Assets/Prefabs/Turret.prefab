@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 33782139907002660}
   - component: {fileID: 23612629683391220}
   - component: {fileID: 114296787144180390}
+  - component: {fileID: 136635094051075474}
   m_Layer: 0
   m_Name: Turret_Gun
   m_TagString: Untagged
@@ -130,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1303297920130360}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 45, y: 45, z: 45}
   m_Children:
   - {fileID: 4124493802145454}
   m_Father: {fileID: 4468720912882974}
@@ -297,14 +298,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6728e41b3a0440540bec0b5504c0ad62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyShouldIgnore: 0
   projectileSpawnPoint: {fileID: 1058395404682574}
-  health: 3
+  health: 30
   reloadTime: 0.6
   projectileSpeed: 8
   projectile: {fileID: 114016748995387914, guid: 38b0d44b1d7d27f46accf5d69cd31803,
     type: 2}
   parent: {fileID: 1762482329300558}
   maxDegreesPerSecond: 180
+--- !u!136 &136635094051075474
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761503370601154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.016
+  m_Height: 0.04
+  m_Direction: 1
+  m_Center: {x: 3.8806856e-25, y: 0, z: 0.004}
 --- !u!208 &208316619943383110
 NavMeshObstacle:
   m_ObjectHideFlags: 1
