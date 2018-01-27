@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 136210049903015526}
   - component: {fileID: 114940754236754524}
   - component: {fileID: 195203261144947862}
+  - component: {fileID: 114281903529265562}
   m_Layer: 0
   m_Name: Enemy_ranged
   m_TagString: Untagged
@@ -72,6 +73,44 @@ Transform:
   m_Father: {fileID: 4752174093486234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114281903529265562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159043559193582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43562b243ebe664494d731773e1755b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 8
+  NavMeshAgent: {fileID: 195203261144947862}
+  SpriteRenderer: {fileID: 212303125207593322}
+  DirectionalSpritesLeft:
+  - {fileID: 21300010, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300012, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300014, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300016, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300018, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  DirectionalSpritesRight:
+  - {fileID: 21300000, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300002, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300004, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300006, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300008, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  DirectionalSpritesFront:
+  - {fileID: 21300030, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300032, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300034, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300036, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300038, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  DirectionalSpritesBack:
+  - {fileID: 21300020, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300022, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300024, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300026, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
+  - {fileID: 21300028, guid: f47f87c09d932804e83862ad9ecae1ad, type: 3}
 --- !u!114 &114940754236754524
 MonoBehaviour:
   m_ObjectHideFlags: 1

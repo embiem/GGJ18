@@ -1,29 +1,29 @@
 fileFormatVersion: 2
 guid: f47f87c09d932804e83862ad9ecae1ad
-timeCreated: 1517052891
+timeCreated: 1517060138
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Enemy1_Spritesheet_0
-    21300002: Enemy1_Spritesheet_1
-    21300004: Enemy1_Spritesheet_2
-    21300006: Enemy1_Spritesheet_3
-    21300008: Enemy1_Spritesheet_4
-    21300010: Enemy1_Spritesheet_5
-    21300012: Enemy1_Spritesheet_6
-    21300014: Enemy1_Spritesheet_7
-    21300016: Enemy1_Spritesheet_8
-    21300018: Enemy1_Spritesheet_9
-    21300020: Enemy1_Spritesheet_10
-    21300022: Enemy1_Spritesheet_11
-    21300024: Enemy1_Spritesheet_12
-    21300026: Enemy1_Spritesheet_13
-    21300028: Enemy1_Spritesheet_14
-    21300030: Enemy1_Spritesheet_15
-    21300032: Enemy1_Spritesheet_16
-    21300034: Enemy1_Spritesheet_17
-    21300036: Enemy1_Spritesheet_18
-    21300038: Enemy1_Spritesheet_19
+    21300000: Enemy1_Spritesheet_right0
+    21300002: Enemy1_Spritesheet_right1
+    21300004: Enemy1_Spritesheet_right2
+    21300006: Enemy1_Spritesheet_right3
+    21300008: Enemy1_Spritesheet_right4
+    21300010: Enemy1_Spritesheet_left0
+    21300012: Enemy1_Spritesheet_left1
+    21300014: Enemy1_Spritesheet_left2
+    21300016: Enemy1_Spritesheet_left3
+    21300018: Enemy1_Spritesheet_left4
+    21300020: Enemy1_Spritesheet_back0
+    21300022: Enemy1_Spritesheet_back1
+    21300024: Enemy1_Spritesheet_back2
+    21300026: Enemy1_Spritesheet_back3
+    21300028: Enemy1_Spritesheet_back4
+    21300030: Enemy1_Spritesheet_front0
+    21300032: Enemy1_Spritesheet_front1
+    21300034: Enemy1_Spritesheet_front2
+    21300036: Enemy1_Spritesheet_front3
+    21300038: Enemy1_Spritesheet_front4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_0
+      name: Enemy1_Spritesheet_right0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,13 +108,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_1
+      name: Enemy1_Spritesheet_right1
       rect:
         serializedVersion: 2
         x: 142
@@ -122,13 +122,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_2
+      name: Enemy1_Spritesheet_right2
       rect:
         serializedVersion: 2
         x: 284
@@ -136,27 +136,27 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_3
+      name: Enemy1_Spritesheet_right3
       rect:
         serializedVersion: 2
         x: 426
-        y: 428.25
-        width: 142.6
-        height: 142.75
+        y: 428
+        width: 143
+        height: 143
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_4
+      name: Enemy1_Spritesheet_right4
       rect:
         serializedVersion: 2
         x: 568
@@ -164,13 +164,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_5
+      name: Enemy1_Spritesheet_left0
       rect:
         serializedVersion: 2
         x: 0
@@ -178,13 +178,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_6
+      name: Enemy1_Spritesheet_left1
       rect:
         serializedVersion: 2
         x: 142
@@ -192,13 +192,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_7
+      name: Enemy1_Spritesheet_left2
       rect:
         serializedVersion: 2
         x: 284
@@ -206,13 +206,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_8
+      name: Enemy1_Spritesheet_left3
       rect:
         serializedVersion: 2
         x: 426
@@ -220,13 +220,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_9
+      name: Enemy1_Spritesheet_left4
       rect:
         serializedVersion: 2
         x: 568
@@ -234,13 +234,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_10
+      name: Enemy1_Spritesheet_back0
       rect:
         serializedVersion: 2
         x: 0
@@ -248,13 +248,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_11
+      name: Enemy1_Spritesheet_back1
       rect:
         serializedVersion: 2
         x: 142
@@ -262,13 +262,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_12
+      name: Enemy1_Spritesheet_back2
       rect:
         serializedVersion: 2
         x: 284
@@ -276,27 +276,27 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_13
+      name: Enemy1_Spritesheet_back3
       rect:
         serializedVersion: 2
-        x: 426
-        y: 144.25
-        width: 142.6
-        height: 142.75
+        x: 427
+        y: 144
+        width: 143
+        height: 143
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_14
+      name: Enemy1_Spritesheet_back4
       rect:
         serializedVersion: 2
         x: 568
@@ -304,13 +304,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_15
+      name: Enemy1_Spritesheet_front0
       rect:
         serializedVersion: 2
         x: 0
@@ -318,13 +318,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_16
+      name: Enemy1_Spritesheet_front1
       rect:
         serializedVersion: 2
         x: 142
@@ -332,13 +332,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_17
+      name: Enemy1_Spritesheet_front2
       rect:
         serializedVersion: 2
         x: 284
@@ -346,13 +346,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_18
+      name: Enemy1_Spritesheet_front3
       rect:
         serializedVersion: 2
         x: 426
@@ -360,13 +360,13 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Enemy1_Spritesheet_19
+      name: Enemy1_Spritesheet_front4
       rect:
         serializedVersion: 2
         x: 568
@@ -374,7 +374,7 @@ TextureImporter:
         width: 142.6
         height: 142.75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
