@@ -9,6 +9,7 @@ public class TransmissionTower : Installment
 	public float pointsPerSecond = 1f;
 
 	[Header("Refs")]
+  public GameObject BrokenTransmissionTowerPrefab;
 	public Rotate RotateScript;
   public LineRenderer Laser;
 
@@ -50,6 +51,7 @@ public class TransmissionTower : Installment
 
   private void OnDeath()
   {
+    Instantiate(BrokenTransmissionTowerPrefab, transform.position, transform.rotation);
     Destroy(this.gameObject);
   }
 }
