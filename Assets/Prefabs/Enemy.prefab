@@ -96,7 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5461e31de4e88154d90b27477454328f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMeleeArchetype: 1
+  projectileRange: 10
+  projectileSpeed: 10
+  attackCooldown: 1
   Health: 3
+  ProjectilePrefab: {fileID: 0}
+  DeathAnimPrefab: {fileID: 1155563595510158, guid: a12e3df7ef688604196fa9af8c0d2e4d,
+    type: 2}
 --- !u!136 &136819021346213652
 CapsuleCollider:
   m_ObjectHideFlags: 1

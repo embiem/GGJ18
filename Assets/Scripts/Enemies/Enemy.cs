@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
   [Header("Refs")]
   public Projectile ProjectilePrefab;
+  public GameObject DeathAnimPrefab;
 
   NavMeshAgent agent;
   PlayerController player;
@@ -148,6 +149,7 @@ public class Enemy : MonoBehaviour
 
   private void OnDeath()
   {
+    Instantiate(DeathAnimPrefab, transform.position, Quaternion.identity);
     Destroy(this.gameObject);
   }
 
