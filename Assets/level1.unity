@@ -1009,29 +1009,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1393351262329698, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690243776442088, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4746147266321526, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 1690243776442088, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
       propertyPath: m_Name
       value: Bridge (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4746147266321526, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.3363341
-      objectReference: {fileID: 0}
-    - target: {fileID: 4746147266321526, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f6d7b4e4f3d69740ac4d83f7c9b36b3, type: 2}
@@ -22292,7 +22272,7 @@ GameObject:
   - component: {fileID: 1880510762}
   - component: {fileID: 1880510761}
   - component: {fileID: 1880510760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
