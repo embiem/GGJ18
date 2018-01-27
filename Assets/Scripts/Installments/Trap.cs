@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public ParticleSystem explosionPart;
+    public Animator explosion;
+
+    public GameObject thisObject;
 
     Renderer rend;
 
@@ -12,8 +14,6 @@ public class Trap : MonoBehaviour
 
     private void Start()
     {
-        explosionPart.Stop();
-        explosionPart.Clear();
        rend = this.gameObject.GetComponent<Renderer>();
         col = this.gameObject.GetComponent<Collider>();
     }
@@ -22,24 +22,27 @@ public class Trap : MonoBehaviour
     {
         if (other.GetComponent<Enemy>())
         {
-            print("is Enemy!");
             var e = other.GetComponent<Enemy>();
             e.TakeDamage(3);
 
-            this.DeactivateTrap();
+            this.StartCoroutine("DeactivateTrap");
         }
     }
 
-    void DeactivateTrap()
+    IEnumerator  DeactivateTrap()
     {
-        this.explosionPart.Play();
+        this.explosion.Play("Expl");
 
         if(col != null)
         col.enabled = false;
 
         if(rend != null)
         rend.enabled = false;
+        yield return new WaitForSeconds(0.5f);
 
+        Destroy(thisObject.gameObject);
+
+        print("WTF!!!");
 
     }
 
