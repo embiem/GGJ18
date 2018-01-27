@@ -71,8 +71,6 @@ GameObject:
   - component: {fileID: 33782139907002660}
   - component: {fileID: 23612629683391220}
   - component: {fileID: 114296787144180390}
-  - component: {fileID: 135865785572368244}
-  - component: {fileID: 54551352806440754}
   m_Layer: 0
   m_Name: Turret_Gun
   m_TagString: Untagged
@@ -288,21 +286,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761503370601154}
   m_Mesh: {fileID: 4300002, guid: 17e4f29ca9e1e024c97a76ea7c7e89da, type: 3}
---- !u!54 &54551352806440754
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761503370601154}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 94
-  m_CollisionDetection: 0
 --- !u!114 &114296787144180390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,24 +299,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPoint: {fileID: 1058395404682574}
   health: 3
-  reloadTime: 0.2
+  reloadTime: 0.6
   projectileSpeed: 8
   projectile: {fileID: 114016748995387914, guid: 38b0d44b1d7d27f46accf5d69cd31803,
     type: 2}
   parent: {fileID: 1762482329300558}
   maxDegreesPerSecond: 180
---- !u!135 &135865785572368244
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761503370601154}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &208316619943383110
 NavMeshObstacle:
   m_ObjectHideFlags: 1

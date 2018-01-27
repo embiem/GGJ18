@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+  public static List<Enemy> ListOfEnemies = new List<Enemy>();
+
   [Header("Balancing Values")]
   public bool isMeleeArchetype = true;
   public float projectileRange = 10f;
@@ -31,6 +33,8 @@ public class Enemy : MonoBehaviour
   // Use this for initialization
   void Start()
   {
+    ListOfEnemies.Add(this);
+
     this.agent = GetComponent<NavMeshAgent>();
     this.player = FindObjectOfType<PlayerController>();
     StartCoroutine(CheckForTarget());
@@ -55,7 +59,8 @@ public class Enemy : MonoBehaviour
     {
       this.agent.destination = transform.position;
 
-      if (Time.time - lastAttackTime > attackCooldown) {
+      if (Time.time - lastAttackTime > attackCooldown)
+      {
         lastAttackTime = Time.time;
         this.Attack();
       }
@@ -105,11 +110,12 @@ public class Enemy : MonoBehaviour
   {
     var distance = Vector3.Distance(CurrentTarget.transform.position, transform.position);
 
-    if (isMeleeArchetype)
+    if (distance < agent.stoppingDistance + 0.5f)
     {
-      return distance < agent.stoppingDistance + 0.5f;
+      return true;
     }
-    else
+
+    if (!isMeleeArchetype)
     {
       RaycastHit hit;
       if (Physics.Raycast(transform.position, transform.forward, out hit, this.projectileRange))
@@ -141,5 +147,10 @@ public class Enemy : MonoBehaviour
   private void OnDeath()
   {
     Destroy(this.gameObject);
+  }
+
+  void OnDestroy()
+  {
+    ListOfEnemies.Remove(this);
   }
 }

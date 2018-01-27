@@ -19,81 +19,84 @@ public class Turret : Installment
 
   public float maxDegreesPerSecond = 30.0f;
 
-  GameObject target;
-
   GameObject currentTarget;
 
   Quaternion qTo;
 
-    bool targetLocked = false;
+  private float lastShotTime = 0f;
 
-
-
-    private void OnTriggerEnter(Collider other)
+  new void Start()
   {
-    if (other.GetComponent<Enemy>())
-    {
-      if (!currentTarget)
-      {
-        currentTarget = other.gameObject;
-        AimAndFire(other.gameObject);
-      }
-
-    }
+    base.Start();
+    StartCoroutine(CheckForTarget());
   }
 
-  private void OnTriggerExit(Collider other)
+  IEnumerator CheckForTarget()
   {
-    if (other.gameObject == currentTarget)
-    {
-      currentTarget = null;
-    }
+    yield return new WaitForSeconds(5f);
+    DecideNextEnemy();
+    StartCoroutine(CheckForTarget());
   }
 
   private void Update()
   {
-
-            if (currentTarget != null)
-            {
-                Vector3 v3T = currentTarget.transform.position - parent.transform.position;
-                v3T.y = parent.transform.position.y;
-                qTo = Quaternion.LookRotation(v3T, Vector3.up);
-                parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
-            }
-
-
-  }
-
-  void AimAndFire(GameObject enemy)
-  {
-    if (currentTarget)
-      StartCoroutine("ShootAtTarget", enemy.transform.position);
-  }
-
-  IEnumerator ShootAtTarget(Vector3 enemyPos)
-  {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (hit.collider.gameObject == currentTarget) { 
-                var spawnedProjectile = Instantiate(projectile,
-                    projectileSpawnPoint.transform.position,
-                    Quaternion.identity);
-
-                    spawnedProjectile.Fire(transform.forward, projectileSpeed);
-            }
-        
-           
-        }
-
-
-    yield return new WaitForSeconds(reloadTime);
-
-    if (currentTarget)
+    if (!currentTarget)
     {
-      AimAndFire(currentTarget);
+      DecideNextEnemy();
     }
+
+    if (currentTarget != null)
+    {
+      // Rotate
+      Vector3 v3T = currentTarget.transform.position - parent.transform.position;
+      v3T.y = parent.transform.position.y;
+      qTo = Quaternion.LookRotation(v3T, Vector3.up);
+      parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
+
+      // Shoot
+      if (Time.time - lastShotTime > reloadTime)
+      {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.up * -1, out hit))
+        {
+          if (hit.collider.gameObject == currentTarget)
+          {
+            Shoot();
+            lastShotTime = Time.time;
+          }
+        }
+      }
+    }
+  }
+
+  private void Shoot()
+  {
+    var spawnedProjectile = Instantiate(
+      projectile,
+      projectileSpawnPoint.transform.position,
+      Quaternion.identity
+    );
+
+    spawnedProjectile.Fire(transform.up * -1, projectileSpeed);
+  }
+
+  private void DecideNextEnemy()
+  {
+    Enemy nearestEnemy = null;
+    float nearestEnemyDistance = float.MaxValue;
+
+    for (var i = 0; i < Enemy.ListOfEnemies.Count; i++)
+    {
+      var curEnemy = Enemy.ListOfEnemies[i];
+      var distance = Vector3.Distance(transform.position, curEnemy.transform.position);
+      if (distance < nearestEnemyDistance)
+      {
+        nearestEnemyDistance = distance;
+        nearestEnemy = curEnemy;
+      }
+    }
+    if (nearestEnemy)
+      this.currentTarget = nearestEnemy.gameObject;
   }
 
   public void TakeDamage(int damage)
