@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
   public float pushPower = 2.0F;
   public int damage = 1;
   public float LaserLength = 6f;
+  public LayerMask clickLayerMask;
 
 
   [Header("Refs")]
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     RaycastHit hit;
-    if (Physics.Raycast(ray, out hit, 1000))
+    if (Physics.Raycast(ray, out hit, 1000, this.clickLayerMask))
     {
       var heading = hit.point - transform.position;
       var distance = heading.magnitude;
