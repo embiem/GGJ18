@@ -8,6 +8,14 @@ public class Turret : MonoBehaviour {
     public Rigidbody projectile;
     public float reloadTime = 0.2f;
 
+    [Header("Rotation")]
+    public GameObject parent;
+    public float maxDegreesPerSecond = 30.0f;
+
+    GameObject target;
+   
+    Quaternion qTo;
+
     bool hasTarget = false;
     GameObject currentTarget;
 
@@ -35,6 +43,14 @@ public class Turret : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        var v3T = currentTarget.transform.position - parent.transform.position;
+        v3T.y = parent.transform.position.y;
+        qTo = Quaternion.LookRotation(v3T, Vector3.up);
+        parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
+    }
+
     void AimAndFire(GameObject enemy)
     {
         if (hasTarget)
@@ -43,10 +59,10 @@ public class Turret : MonoBehaviour {
 
     IEnumerator ShootAtTarget(Vector3 enemyPos)
     {
-        print("blubb");
+ 
         Instantiate(projectile, this.transform.position, Quaternion.identity);
 
-   
+        projectile.AddForce(transform.forward * 200 * Time.deltaTime);
 
         yield return new WaitForSeconds(reloadTime);
 

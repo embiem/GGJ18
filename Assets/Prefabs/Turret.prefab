@@ -57,7 +57,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4468720912882974}
-  - component: {fileID: 114407017012828210}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -215,12 +214,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114407017012828210
+--- !u!114 &114693427593801904
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1762482329300558}
+  m_GameObject: {fileID: 1736476681145976}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6728e41b3a0440540bec0b5504c0ad62, type: 3}
@@ -230,21 +229,8 @@ MonoBehaviour:
   projectile: {fileID: 54536513851910880, guid: aa1c60504e48009469cef56ea15888be,
     type: 2}
   reloadTime: 0.2
---- !u!114 &114693427593801904
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1736476681145976}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6728e41b3a0440540bec0b5504c0ad62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  projectile: {fileID: 54536513851910880, guid: aa1c60504e48009469cef56ea15888be,
-    type: 2}
-  reloadTime: 0.2
+  parent: {fileID: 1762482329300558}
+  maxDegreesPerSecond: 180
 --- !u!135 &135105248996217400
 SphereCollider:
   m_ObjectHideFlags: 1
