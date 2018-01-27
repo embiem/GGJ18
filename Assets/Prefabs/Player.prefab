@@ -341,6 +341,7 @@ MonoBehaviour:
   speed: 4
   jumpSpeed: 0
   gravity: 20
+  Health: 20
   projectileSpeed: 10
   projectileCooldown: 0.5
   projectileSpawnOffset: 0.5
@@ -354,6 +355,8 @@ MonoBehaviour:
   CharacterController: {fileID: 143047535785382660}
   SpriteRenderer: {fileID: 212834049402145496}
   Laser: {fileID: 120514345107042226}
+  DeathAnimPrefab: {fileID: 1155563595510158, guid: a12e3df7ef688604196fa9af8c0d2e4d,
+    type: 2}
   DirectionalSpritesLeft:
   - {fileID: 21300000, guid: a6d93157f08279e40a544a3c33f40e79, type: 3}
   - {fileID: 21300002, guid: a6d93157f08279e40a544a3c33f40e79, type: 3}

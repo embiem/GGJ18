@@ -1,19 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
+	public static GameManager instance = null;
+
 	void Start () {
-		var i = 1;
-		Debug.Log("It works! " + i);
-		i++;
-		Debug.Log("Now we're done with " + i);
+		instance = this;
 	}
 
-	// Update is called once per frame
-	void Update () {
-
+	public void OnPlayerDied()
+	{
+		Debug.LogWarning("Player DIED!!");
 	}
 }
