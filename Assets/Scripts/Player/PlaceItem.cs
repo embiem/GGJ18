@@ -32,7 +32,7 @@ public class PlaceItem : MonoBehaviour
             {
                 if (currentItem == null)
                 {
-                    Debug.LogError("No item to set! Choose an item first!");
+                    Debug.LogWarning("No item to set! Choose an item first!");
                 }
 
                 if (itemCount < maxItems && currentItem != null) {
@@ -56,7 +56,7 @@ public class PlaceItem : MonoBehaviour
     {
         if (item == null)
         {
-            Debug.LogError("No item to set! Choose an item first!");
+            Debug.LogWarning("No item to set! Choose an item first!");
         }
 
         if (item != null) {
