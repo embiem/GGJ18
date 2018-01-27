@@ -25,11 +25,13 @@ public class PlayerController : MonoBehaviour
   public float animationSpeed = 5.0f;
   public float pushPower = 2.0F;
   public int damage = 1;
+  public float LaserLength = 6f;
 
 
   [Header("Refs")]
   public CharacterController CharacterController;
   public SpriteRenderer SpriteRenderer;
+  public LineRenderer Laser;
   public Sprite[] DirectionalSpritesLeft;
   public Sprite[] DirectionalSpritesRight;
   public Sprite[] DirectionalSpritesFront;
@@ -66,15 +68,28 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetButtonDown("Fire1") && Time.time - this.lastProjectileTime > projectileCooldown)
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hit;
+    if (Physics.Raycast(ray, out hit, 1000))
     {
-      var projectile = GameObject.Instantiate(
-        ProjectilePrefab,
-        transform.position + CharacterController.center + LookDirection * projectileSpawnOffset,
-        Quaternion.LookRotation(LookDirection, Vector3.up)
-      );
-      projectile.GetComponent<Projectile>().Fire(LookDirection, projectileSpeed);
-      this.lastProjectileTime = Time.time;
+      var heading = hit.point - transform.position;
+      var distance = heading.magnitude;
+      var direction = heading / distance; // This is now the normalized direction.
+      direction.y = 0;
+
+      Laser.SetPosition(0, transform.position + Vector3.up * 0.5f);
+      Laser.SetPosition(1, transform.position + Vector3.up * 0.5f + direction * LaserLength);
+
+      if (Input.GetButtonDown("Fire1") && Time.time - this.lastProjectileTime > projectileCooldown)
+      {
+        var projectile = GameObject.Instantiate(
+          ProjectilePrefab,
+          transform.position + CharacterController.center + direction * projectileSpawnOffset,
+          Quaternion.LookRotation(direction, Vector3.up)
+        );
+        projectile.GetComponent<Projectile>().Fire(direction, projectileSpeed);
+        this.lastProjectileTime = Time.time;
+      }
     }
 
     if (Input.GetButton("Fire2") && Time.time - this.lastMeleeTime > meleeCooldown)
