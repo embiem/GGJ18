@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
   [Header("Refs")]
   public CharacterController CharacterController;
   public ParticleSystem ParticleSystem;
-	public GameObject Model;
+  public GameObject Model;
 
   private Vector3 direction;
   private float speed;
@@ -23,11 +23,12 @@ public class Projectile : MonoBehaviour
   {
     if (isFired && CharacterController.enabled)
     {
-			if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100 || Mathf.Abs(transform.position.z) > 100) {
-				Destroy(this.gameObject);
-				return;
-			}
-			 CharacterController.Move(this.speed * this.direction * Time.deltaTime);
+      if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100 || Mathf.Abs(transform.position.z) > 100)
+      {
+        Destroy(this.gameObject);
+        return;
+      }
+      CharacterController.Move(this.speed * this.direction * Time.deltaTime);
     }
   }
 
@@ -35,17 +36,28 @@ public class Projectile : MonoBehaviour
   {
     if (isFired)
     {
-			ParticleSystem.Play();
+      ParticleSystem.Play();
 
-			Destroy(this.gameObject, 1f);
-			Model.SetActive(false);
-			CharacterController.enabled = false;
-			this.isFired = false;
+      Destroy(this.gameObject, 1f);
+      Model.SetActive(false);
+      CharacterController.enabled = false;
+      this.isFired = false;
 
-			var enemy = hit.gameObject.GetComponent<Enemy>();
-			if (enemy) {
-				enemy.TakeDamage();
-			}
+      var enemy = hit.gameObject.GetComponent<Enemy>();
+      if (enemy)
+      {
+        enemy.TakeDamage();
+      }
+
+      Rigidbody body = hit.collider.attachedRigidbody;
+      if (body == null || body.isKinematic)
+        return;
+
+      if (hit.moveDirection.y < -0.3F)
+        return;
+
+      Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+      body.velocity = pushDir * this.speed;
     }
   }
 

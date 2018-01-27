@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
   public float meleeRange = 2f;
   public float meleeCooldown = 1f;
   public float animationSpeed = 5.0f;
+  public float pushPower = 2.0F;
 
 
   [Header("Refs")]
@@ -96,6 +97,19 @@ public class PlayerController : MonoBehaviour
       spriteAnimIdx = 0;
     }
     SpriteRenderer.sprite = currentSprites[Mathf.FloorToInt(spriteAnimIdx) % currentSprites.Length];
+  }
+
+  void OnControllerColliderHit(ControllerColliderHit hit)
+  {
+    Rigidbody body = hit.collider.attachedRigidbody;
+    if (body == null || body.isKinematic)
+      return;
+
+    if (hit.moveDirection.y < -0.3F)
+      return;
+
+    Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+    body.velocity = pushDir * pushPower;
   }
 
   void Melee()
