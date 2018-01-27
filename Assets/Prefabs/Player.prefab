@@ -328,6 +328,7 @@ MonoBehaviour:
   meleeRange: 1
   meleeCooldown: 0.5
   animationSpeed: 8
+  pushPower: 2
   CharacterController: {fileID: 143047535785382660}
   SpriteRenderer: {fileID: 212834049402145496}
   DirectionalSpritesLeft:
@@ -376,8 +377,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}

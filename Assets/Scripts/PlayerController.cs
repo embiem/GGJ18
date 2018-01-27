@@ -17,11 +17,13 @@ public class PlayerController : MonoBehaviour
   public float jumpSpeed = 8.0F;
   public float gravity = 20.0F;
   public float projectileSpeed = 10.0f;
+  public float projectileCooldown = 0.5f;
   public float projectileSpawnOffset = 0.6f;
   public float meleeWeaponSpeed = 10.0f;
   public float meleeRange = 2f;
   public float meleeCooldown = 1f;
   public float animationSpeed = 5.0f;
+  public float pushPower = 2.0F;
 
 
   [Header("Refs")]
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
   private Vector3 lookDirection = new Vector3(0f, 0f, -1f);
   private float spriteAnimIdx = 0;
   private float lastMeleeTime = 0.0f;
+  private float lastProjectileTime = 0.0f;
 
   void Start()
   {
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetButtonDown("Fire1"))
+    if (Input.GetButtonDown("Fire1") && Time.time - this.lastProjectileTime > projectileCooldown)
     {
       var projectile = GameObject.Instantiate(
         ProjectilePrefab,
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
         Quaternion.LookRotation(lookDirection, Vector3.up)
       );
       projectile.GetComponent<Projectile>().Fire(lookDirection, projectileSpeed);
+      this.lastProjectileTime = Time.time;
     }
 
     if (Input.GetButton("Fire2") && Time.time - this.lastMeleeTime > meleeCooldown)
@@ -96,6 +100,19 @@ public class PlayerController : MonoBehaviour
       spriteAnimIdx = 0;
     }
     SpriteRenderer.sprite = currentSprites[Mathf.FloorToInt(spriteAnimIdx) % currentSprites.Length];
+  }
+
+  void OnControllerColliderHit(ControllerColliderHit hit)
+  {
+    Rigidbody body = hit.collider.attachedRigidbody;
+    if (body == null || body.isKinematic)
+      return;
+
+    if (hit.moveDirection.y < -0.3F)
+      return;
+
+    Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+    body.velocity = pushDir * pushPower;
   }
 
   void Melee()
