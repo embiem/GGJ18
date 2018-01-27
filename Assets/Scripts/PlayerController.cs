@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
   public float projectileSpeed = 10.0f;
   public float projectileSpawnOffset = 0.6f;
   public float meleeWeaponSpeed = 10.0f;
-	public float meleeCooldown = 1f;
+  public float meleeRange = 2f;
+  public float meleeCooldown = 1f;
   public float animationSpeed = 5.0f;
 
 
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
   private Vector3 moveDirection = Vector3.zero;
   private Vector3 lookDirection = new Vector3(0f, 0f, -1f);
   private float spriteAnimIdx = 0;
-	private float lastMeleeTime = 0.0f;
+  private float lastMeleeTime = 0.0f;
 
   void Start()
   {
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
     if (Input.GetButton("Fire2") && Time.time - this.lastMeleeTime > meleeCooldown)
     {
       this.Melee();
-			this.lastMeleeTime = Time.time;
+      this.lastMeleeTime = Time.time;
     }
 
     if (CharacterController.isGrounded)
@@ -99,14 +100,25 @@ public class PlayerController : MonoBehaviour
 
   void Melee()
   {
-		switch (this.GetCurrentLookDirection())
-		{
-			case E_LOOK_DIRECTION.BACK: MeleeWeapon.SetTrigger("back"); break;
+    switch (this.GetCurrentLookDirection())
+    {
+      case E_LOOK_DIRECTION.BACK: MeleeWeapon.SetTrigger("back"); break;
       case E_LOOK_DIRECTION.RIGHT: MeleeWeapon.SetTrigger("right"); break;
       case E_LOOK_DIRECTION.LEFT: MeleeWeapon.SetTrigger("left"); break;
       default: MeleeWeapon.SetTrigger("front"); break;
-		}
-		// TODO check for enemy-hit
+    }
+
+    // check for enemy-hit
+    RaycastHit hit;
+    Debug.DrawRay(transform.position, this.lookDirection * this.meleeRange, Color.green, 3, false);
+    if (Physics.Raycast(transform.position, this.lookDirection, out hit, this.meleeRange))
+    {
+      var enemy = hit.collider.GetComponent<Enemy>();
+      if (enemy)
+      {
+        enemy.TakeDamage();
+      }
+    }
   }
 
   E_LOOK_DIRECTION GetCurrentLookDirection()
