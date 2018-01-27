@@ -24,9 +24,9 @@ public class Enemy : MonoBehaviour
 		this.agent.destination = this.player.transform.position;
   }
 
-  public void TakeDamage()
+  public void TakeDamage(int damage)
   {
-    this.Health -= 1;
+    this.Health -= damage;
     if (this.Health <= 0)
     {
       this.OnDeath();

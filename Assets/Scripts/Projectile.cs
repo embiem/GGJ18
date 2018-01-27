@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
   public CharacterController CharacterController;
   public ParticleSystem ParticleSystem;
   public GameObject Model;
+  public int damage = 1;
 
   private Vector3 direction;
   private float speed;
@@ -46,7 +47,7 @@ public class Projectile : MonoBehaviour
       var enemy = hit.gameObject.GetComponent<Enemy>();
       if (enemy)
       {
-        enemy.TakeDamage();
+        enemy.TakeDamage(damage);
       }
 
       Rigidbody body = hit.collider.attachedRigidbody;

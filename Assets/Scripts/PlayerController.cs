@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
   public float meleeCooldown = 1f;
   public float animationSpeed = 5.0f;
   public float pushPower = 2.0F;
+  public int damage = 1;
 
 
   [Header("Refs")]
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
       var enemy = hit.collider.GetComponent<Enemy>();
       if (enemy)
       {
-        enemy.TakeDamage();
+        enemy.TakeDamage(damage);
       }
     }
   }

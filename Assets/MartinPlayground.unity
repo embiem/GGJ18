@@ -856,10 +856,13 @@ MonoBehaviour:
   jumpSpeed: 0
   gravity: 20
   projectileSpeed: 10
+  projectileCooldown: 0.5
   projectileSpawnOffset: 0.5
   meleeWeaponSpeed: 10
+  meleeRange: 2
   meleeCooldown: 1
   animationSpeed: 8
+  pushPower: 2
   CharacterController: {fileID: 1274782913}
   SpriteRenderer: {fileID: 900805426}
   DirectionalSpritesLeft:

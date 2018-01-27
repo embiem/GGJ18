@@ -32,7 +32,7 @@ public class PlaceItem : MonoBehaviour
                 if (itemCount < maxItems && currentItem != null) {
                     PlaceDefenseItem(currentItem);
                     itemCount++;
-                    itemCountDisplay.text = itemCount.ToString();
+                    itemCountDisplay.text = "Placed " + itemCount.ToString() + " from " + maxItems;
                 }
 
                 if (itemCount == maxItems)
