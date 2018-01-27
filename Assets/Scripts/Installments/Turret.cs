@@ -5,19 +5,24 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
 
     public int health = 3;
-    public Rigidbody projectile;
+
     public float reloadTime = 0.2f;
+
+    public Rigidbody projectile;
 
     [Header("Rotation")]
     public GameObject parent;
+
     public float maxDegreesPerSecond = 30.0f;
 
     GameObject target;
-   
+
+    GameObject currentTarget;
+
     Quaternion qTo;
 
     bool hasTarget = false;
-    GameObject currentTarget;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,7 +32,6 @@ public class Turret : MonoBehaviour {
             if (!hasTarget) {
                 currentTarget = other.gameObject;
                 hasTarget = true;
-                print("Target: " + other.name);
                 AimAndFire(other.gameObject);
             }
            
@@ -38,17 +42,20 @@ public class Turret : MonoBehaviour {
     {
         if (other.gameObject == currentTarget)
         {
-            print("Enemy out of Range: " + other.name);
             hasTarget = false;
         }
     }
 
     private void Update()
     {
-        var v3T = currentTarget.transform.position - parent.transform.position;
-        v3T.y = parent.transform.position.y;
-        qTo = Quaternion.LookRotation(v3T, Vector3.up);
-        parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
+        if (currentTarget != null)
+        {
+            Vector3 v3T = currentTarget.transform.position - parent.transform.position;
+            v3T.y = parent.transform.position.y;
+            qTo = Quaternion.LookRotation(v3T, Vector3.up);
+            parent.transform.rotation = Quaternion.RotateTowards(parent.transform.rotation, qTo, maxDegreesPerSecond * Time.deltaTime);
+        }
+       
     }
 
     void AimAndFire(GameObject enemy)

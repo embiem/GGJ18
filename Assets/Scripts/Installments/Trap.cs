@@ -12,6 +12,8 @@ public class Trap : MonoBehaviour
 
     Collider col;
 
+
+
     private void Start()
     {
        rend = this.gameObject.GetComponent<Renderer>();
@@ -31,6 +33,14 @@ public class Trap : MonoBehaviour
 
     IEnumerator  DeactivateTrap()
     {
+
+        var shaker = FindObjectOfType<ScreenShake>();
+
+        if (shaker != null)
+        {
+            shaker.StartScreenShake();
+        }
+
         this.explosion.Play("Expl");
 
         if(col != null)
