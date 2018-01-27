@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 124272714934202018}
   - component: {fileID: 81884362608338396}
   - component: {fileID: 114122728808089472}
+  - component: {fileID: 114554443650689144}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -384,6 +385,17 @@ MonoBehaviour:
   MeleeWeapon: {fileID: 95517130041169904}
   ProjectilePrefab: {fileID: 1922270072597606, guid: d03e692174e82964fa578c71cc27fbc9,
     type: 2}
+--- !u!114 &114554443650689144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670693740480146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4ebc32f619b8546b82da845d7faa02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114806417129075124
 MonoBehaviour:
   m_ObjectHideFlags: 1
