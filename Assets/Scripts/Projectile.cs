@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
   [Header("Refs")]
   public CharacterController CharacterController;
+  public ParticleSystem ParticleSystem;
+	public GameObject Model;
 
   private Vector3 direction;
   private float speed;
@@ -33,8 +35,17 @@ public class Projectile : MonoBehaviour
   {
     if (isFired)
     {
-      Debug.LogWarning("Project-Hit: " + hit.gameObject.name);
+			ParticleSystem.Play();
+
+			Destroy(this.gameObject, 1f);
+			Model.SetActive(false);
+			CharacterController.enabled = false;
 			this.isFired = false;
+
+			var enemy = hit.gameObject.GetComponent<Enemy>();
+			if (enemy) {
+				enemy.TakeDamage();
+			}
     }
   }
 
