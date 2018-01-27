@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
   public float speed = 6.0f;
   public float jumpSpeed = 8.0F;
   public float gravity = 20.0F;
+  public int Health = 20;
   public float projectileSpeed = 10.0f;
   public float projectileCooldown = 0.5f;
   public float projectileSpawnOffset = 0.6f;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
   public CharacterController CharacterController;
   public SpriteRenderer SpriteRenderer;
   public LineRenderer Laser;
+  public GameObject DeathAnimPrefab;
   public Sprite[] DirectionalSpritesLeft;
   public Sprite[] DirectionalSpritesRight;
   public Sprite[] DirectionalSpritesFront;
@@ -68,6 +70,8 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (Health <= 0) return;
+
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     RaycastHit hit;
     if (Physics.Raycast(ray, out hit, 1000))
@@ -212,5 +216,30 @@ public class PlayerController : MonoBehaviour
         this.lookDirection.z = -1;
       }
     }
+  }
+
+  public void TakeDamage(int damage = 1)
+  {
+    this.Health -= damage;
+    if (this.Health <= 0)
+    {
+      this.OnDeath();
+    }
+  }
+
+  private void OnDeath()
+  {
+    Camera.main.gameObject.transform.parent = null;
+
+    Instantiate(DeathAnimPrefab, transform.position, Quaternion.identity);
+
+    CharacterController.enabled = false;
+    for(var i = 0; i < transform.childCount; i++)
+    {
+      var curChild = transform.GetChild(i);
+      curChild.gameObject.SetActive(false);
+    }
+
+    GameManager.instance.OnPlayerDied();
   }
 }

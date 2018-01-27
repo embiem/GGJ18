@@ -99,14 +99,15 @@ public class Enemy : MonoBehaviour
       if (curInstallment.EnemyShouldIgnore) continue;
 
       var distance = Vector3.Distance(transform.position, curInstallment.transform.position);
-      if (distance < nearestInstallmentDistance)
+      if (distance < nearestInstallmentDistance * Random.Range(0.85f, 1.15f)) // some randomness
       {
         nearestInstallmentDistance = distance;
         nearestInstallment = curInstallment;
       }
     }
 
-    this.installmentTarget = nearestInstallment;
+    var playerDistance = Vector3.Distance(transform.position, this.player.transform.position);
+    this.installmentTarget = playerDistance * 2f < nearestInstallmentDistance ? null : nearestInstallment;
   }
 
   private bool IsInRange()
