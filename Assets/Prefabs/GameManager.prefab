@@ -53,4 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelSceneNames:
   - level1
-  LevelSecondsToPrepare: 14000000
+  LevelSecondsToPrepare: 32000000
+  LevelTransmissionPointsToWin:
+  - 350

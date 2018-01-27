@@ -17,10 +17,12 @@ public class GameManager : MonoBehaviour
   private float levelStartTime = 0f;
 
   private float transmissionPoints = 0;
+  private bool gameOver = false;
+  private string gameOverReason = "";
 
   public float RemainingSecondsToPrepare {
     get {
-      return LevelSecondsToPrepare[curLevelIndex] - (Time.time - levelStartTime);
+      return LevelSecondsToPrepare[CurLevelIndex] - (Time.time - levelStartTime);
     }
   }
 
@@ -39,8 +41,50 @@ public class GameManager : MonoBehaviour
 
     set
     {
-      Debug.Log("Transmission Points: " + value);
+      if (value >= LevelTransmissionPointsToWin[CurLevelIndex]) {
+        this.GameOverReason = "Transmission successfully completed!";
+        this.GameOver = true;
+      }
       transmissionPoints = value;
+    }
+  }
+
+  public bool GameOver
+  {
+    get
+    {
+      return gameOver;
+    }
+
+    set
+    {
+      gameOver = value;
+    }
+  }
+
+  public int CurLevelIndex
+  {
+    get
+    {
+      return curLevelIndex;
+    }
+
+    set
+    {
+      curLevelIndex = value;
+    }
+  }
+
+  public string GameOverReason
+  {
+    get
+    {
+      return gameOverReason;
+    }
+
+    set
+    {
+      gameOverReason = value;
     }
   }
 
@@ -59,14 +103,26 @@ public class GameManager : MonoBehaviour
 
 	public void LoadLevel(int levelIndex)
 	{
-		this.curLevelIndex = levelIndex;
+		this.CurLevelIndex = levelIndex;
 		SceneManager.LoadScene(LevelSceneNames[levelIndex]);
     this.levelStartTime = Time.time;
     this.transmissionPoints = 0;
+    this.GameOver = false;
 	}
+
+  public void OnAllTransmissionTowersDied()
+  {
+    if (!this.GameOver) {
+      this.GameOverReason = "All transmission towers destroyed!";
+      this.GameOver = true;
+    }
+  }
 
   public void OnPlayerDied()
   {
-    Debug.LogWarning("Player DIED!!");
+    if (!this.GameOver) {
+      this.GameOverReason = "You died!";
+      this.GameOver = true;
+    }
   }
 }
