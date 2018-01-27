@@ -9,7 +9,7 @@ public class NavAgentSpriteAnim : MonoBehaviour
   public float animationSpeed = 5.0f;
 
   [Header("Refs")]
-	public NavMeshAgent NavMeshAgent;
+  public NavMeshAgent NavMeshAgent;
   public SpriteRenderer SpriteRenderer;
   public Sprite[] DirectionalSpritesLeft;
   public Sprite[] DirectionalSpritesRight;
@@ -18,6 +18,7 @@ public class NavAgentSpriteAnim : MonoBehaviour
 
   // privates
   private Vector3 lookDirection = new Vector3(0f, 0f, -1f);
+  private float lastLookDirCalc = 0;
   private float spriteAnimIdx = 0;
 
   public Vector3 LookDirection
@@ -35,10 +36,15 @@ public class NavAgentSpriteAnim : MonoBehaviour
 
   void Update()
   {
-		SpriteRenderer.transform.rotation = Quaternion.identity;
+    SpriteRenderer.transform.rotation = Quaternion.identity;
 
-		var moveDirection = NavMeshAgent.velocity;
-		this.CalculateLookDirection(moveDirection);
+    var moveDirection = NavMeshAgent.velocity;
+
+    if (Time.time - lastLookDirCalc > 1)
+    {
+      this.CalculateLookDirection(moveDirection);
+      lastLookDirCalc = Time.time;
+    }
 
     // Sprite Animation
     var currentLookDirection = this.GetCurrentLookDirection();
