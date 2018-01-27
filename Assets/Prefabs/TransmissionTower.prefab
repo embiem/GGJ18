@@ -226,6 +226,8 @@ MonoBehaviour:
   EnemyShouldIgnore: 0
   health: 30
   pointsPerSecond: 1
+  BrokenTransmissionTowerPrefab: {fileID: 1311722771019296, guid: 840d8a7be691cde49863971f6d7af438,
+    type: 2}
   RotateScript: {fileID: 114127188549562160}
   Laser: {fileID: 120607102602656780}
 --- !u!120 &120607102602656780
