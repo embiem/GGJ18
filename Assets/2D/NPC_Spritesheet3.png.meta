@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 82bdd93ac2dcb04468dd74815fe36bf2
-timeCreated: 1517136157
+timeCreated: 1517142281
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -93,12 +93,12 @@ TextureImporter:
       name: NPC_Spritesheet3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 228
-        width: 191.4
-        height: 228
+        x: 9
+        y: 235
+        width: 132
+        height: 188
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -107,12 +107,12 @@ TextureImporter:
       name: NPC_Spritesheet3_1
       rect:
         serializedVersion: 2
-        x: 191
-        y: 228
-        width: 191.4
-        height: 228
+        x: 210
+        y: 239
+        width: 132
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: NPC_Spritesheet3_2
       rect:
         serializedVersion: 2
-        x: 382
-        y: 228
-        width: 191.4
-        height: 228
+        x: 398
+        y: 238
+        width: 133
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -135,12 +135,12 @@ TextureImporter:
       name: NPC_Spritesheet3_3
       rect:
         serializedVersion: 2
-        x: 573
-        y: 228
-        width: 191.4
-        height: 228
+        x: 591
+        y: 233
+        width: 132
+        height: 190
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: NPC_Spritesheet3_4
       rect:
         serializedVersion: 2
-        x: 764
-        y: 228
-        width: 191.4
-        height: 228
+        x: 779
+        y: 236
+        width: 133
+        height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: NPC_Spritesheet3_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 191.4
-        height: 228
+        x: 44
+        y: 42
+        width: 132
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: NPC_Spritesheet3_6
       rect:
         serializedVersion: 2
-        x: 191
-        y: 0
-        width: 191.4
-        height: 228
+        x: 234
+        y: 43
+        width: 132
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: NPC_Spritesheet3_7
       rect:
         serializedVersion: 2
-        x: 382
-        y: 0
-        width: 191.4
-        height: 228
+        x: 424
+        y: 42
+        width: 133
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: NPC_Spritesheet3_8
       rect:
         serializedVersion: 2
-        x: 573
-        y: 0
-        width: 191.4
-        height: 228
+        x: 615
+        y: 43
+        width: 132
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: NPC_Spritesheet3_9
       rect:
         serializedVersion: 2
-        x: 764
-        y: 0
-        width: 191.4
-        height: 228
+        x: 810
+        y: 39
+        width: 133
+        height: 188
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
