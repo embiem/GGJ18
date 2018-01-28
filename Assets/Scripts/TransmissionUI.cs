@@ -35,7 +35,7 @@ public class TransmissionUI : MonoBehaviour
       }
       var lerpedVal = Mathf.Lerp(MaskMinMax.x, MaskMinMax.y, GameManager.instance.TransmissionProgress);
       MaskController.sizeDelta = new Vector2(lerpedVal, MaskController.sizeDelta.y);
-      PercentageText.text = (int)(GameManager.instance.TransmissionProgress * 100) + "%";
+      PercentageText.text = Mathf.CeilToInt(GameManager.instance.TransmissionProgress * 100) + "%";
     }
   }
 }
