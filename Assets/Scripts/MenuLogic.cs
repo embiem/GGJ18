@@ -19,7 +19,7 @@ public class MenuLogic : MonoBehaviour {
 
     public void StartScene(string scene)
     {
-        SceneManager.LoadSceneAsync(scene);
+        GameManager.instance.LoadLevel(0);
     }
 
     public void ShowTutorial()

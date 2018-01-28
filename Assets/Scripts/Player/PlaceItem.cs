@@ -13,9 +13,6 @@ public class PlaceItem : MonoBehaviour
 
   public bool canPlaceItem;
 
-  public Text itemCountDisplay;
-  public Text itemSelectionDisplay;
-
   int currentItemIdx = 0;
   PlayerController player;
 
@@ -23,17 +20,6 @@ public class PlaceItem : MonoBehaviour
 
   void Start()
   {
-    if (!itemCountDisplay)
-    {
-      var itemCounter = GameObject.Find("ItemCounter");
-      itemCountDisplay = itemCounter.GetComponent<Text>();
-    }
-    if (!itemSelectionDisplay)
-    {
-      var itemSelection = GameObject.Find("ItemSelection");
-      itemSelectionDisplay = itemSelection.GetComponent<Text>();
-    }
-    itemSelectionDisplay.text = "Current Selection: " + defenseItemNames[currentItemIdx];
     this.player = FindObjectOfType<PlayerController>();
   }
 
@@ -42,7 +28,6 @@ public class PlaceItem : MonoBehaviour
     if (Input.GetButtonDown("Jump"))
     {
       currentItemIdx = (currentItemIdx + 1) % defenseItem.Length;
-      itemSelectionDisplay.text = "Current Selection: " + defenseItemNames[currentItemIdx];
     }
 
     if (canPlaceItem)
@@ -53,7 +38,6 @@ public class PlaceItem : MonoBehaviour
         {
           PlaceDefenseItem(defenseItem[currentItemIdx]);
           itemCount++;
-          itemCountDisplay.text = "Available Items " + (maxItems - itemCount).ToString();
         }
 
         if (itemCount == maxItems)
