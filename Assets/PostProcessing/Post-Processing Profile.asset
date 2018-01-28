@@ -42,32 +42,32 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 0
     m_Settings:
-      intensity: 1
-      radius: 0.3
-      sampleCount: 10
+      intensity: 4
+      radius: 100
+      sampleCount: 16
       downsampling: 1
       forceForwardCompatibility: 0
-      ambientOnly: 0
+      ambientOnly: 1
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       reflection:
         blendType: 0
-        reflectionQuality: 2
-        maxDistance: 100
-        iterationCount: 256
+        reflectionQuality: 0
+        maxDistance: 150
+        iterationCount: 69
         stepSize: 3
-        widthModifier: 0.5
-        reflectionBlur: 1
+        widthModifier: 0.08
+        reflectionBlur: 0.89
         reflectBackfaces: 0
       intensity:
-        reflectionMultiplier: 1
-        fadeDistance: 100
-        fresnelFade: 1
-        fresnelFadePower: 1
+        reflectionMultiplier: 0.326
+        fadeDistance: 57
+        fresnelFade: 0.211
+        fresnelFadePower: 1.28
       screenEdgeMask:
-        intensity: 0.03
+        intensity: 0.266
   depthOfField:
     m_Enabled: 1
     m_Settings:
@@ -284,9 +284,9 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.531
   grain:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       colored: 0
       intensity: 0.074
