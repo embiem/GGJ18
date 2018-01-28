@@ -239,7 +239,7 @@ MonoBehaviour:
   CharacterController: {fileID: 143364655232361560}
   ParticleSystem: {fileID: 198722587739460148}
   Model: {fileID: 1277775579407648}
-  damage: 1
+  damage: 2
 --- !u!143 &143364655232361560
 CharacterController:
   m_ObjectHideFlags: 1
