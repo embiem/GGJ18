@@ -74,7 +74,8 @@ public class GameManager : MonoBehaviour
         this.GameOver = true;
         AudioSuccessful.Play();
       }
-      transmissionPoints = value;
+      if (!GameOver)
+        transmissionPoints = value;
     }
   }
 

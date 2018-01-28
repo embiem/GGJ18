@@ -23,7 +23,7 @@ public class EnemySpawn : MonoBehaviour
 
   void Update()
   {
-    if (GameManager.instance.RemainingSecondsToPrepare < 0)
+    if (!GameManager.instance.GameOver && GameManager.instance.RemainingSecondsToPrepare < 0)
     {
       timeBucket += Time.deltaTime;
 

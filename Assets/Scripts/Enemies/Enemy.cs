@@ -52,6 +52,12 @@ public class Enemy : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (GameManager.instance.GameOver)
+    {
+      this.OnDeath();
+      return;
+    }
+
     if (!this.installmentTarget)
     {
       DecideNextInstallment();

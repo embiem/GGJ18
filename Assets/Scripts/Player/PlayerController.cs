@@ -90,14 +90,15 @@ public class PlayerController : MonoBehaviour
     if (Health <= 0) return;
 
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    RaycastHit hit;
-    if (Physics.Raycast(ray, out hit, 1000, this.clickLayerMask))
-    {
-      var heading = hit.point - transform.position;
-      var distance = heading.magnitude;
-      var direction = heading / distance; // This is now the normalized direction.
-      direction.y = 0;
+    RaycastHit mouseHit;
+    var didHit = Physics.Raycast(ray, out mouseHit, 1000, this.clickLayerMask);
+    var heading = didHit ? (mouseHit.point - transform.position) : Vector3.zero;
+    var distance = didHit ? heading.magnitude : 0.0f;
+    var direction = didHit ? (heading / distance) : Vector3.zero; // This is now the normalized direction.
+    direction.y = 0;
 
+    if (didHit)
+    {
       Laser.SetPosition(0, transform.position + Vector3.up * 0.5f);
       Laser.SetPosition(1, transform.position + Vector3.up * 0.5f + direction * LaserLength);
 
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
     if (CharacterController.isGrounded)
     {
       moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-      this.CalculateLookDirection(moveDirection);
+      this.CalculateLookDirection(direction == Vector3.zero ? moveDirection : direction);
 
       moveDirection *= speed;
       if (Input.GetButton("Jump"))
@@ -245,7 +246,7 @@ public class PlayerController : MonoBehaviour
     Instantiate(DeathAnimPrefab, transform.position, Quaternion.identity);
 
     CharacterController.enabled = false;
-    for(var i = 0; i < transform.childCount; i++)
+    for (var i = 0; i < transform.childCount; i++)
     {
       var curChild = transform.GetChild(i);
       curChild.gameObject.SetActive(false);
