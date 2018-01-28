@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -10963,6 +10963,7 @@ GameObject:
   - component: {fileID: 467432186}
   - component: {fileID: 467432188}
   - component: {fileID: 467432187}
+  - component: {fileID: 467432189}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -11021,6 +11022,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467432185}
+--- !u!114 &467432189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467432185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.27843142, b: 0.6516566, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1 &476019024
 GameObject:
   m_ObjectHideFlags: 0
@@ -13894,7 +13909,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 2.29, z: 1}
   m_Children: []
   m_Father: {fileID: 1982989845}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: -90.00001, z: 0}
 --- !u!212 &664928406
 SpriteRenderer:
@@ -15558,7 +15573,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: main
+          m_StringArgument: level1
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -18545,8 +18560,8 @@ CanvasGroup:
   m_GameObject: {fileID: 993915317}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &993915319
 MonoBehaviour:
@@ -29080,7 +29095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30586,6 +30601,7 @@ GameObject:
   - component: {fileID: 1739344295}
   - component: {fileID: 1739344297}
   - component: {fileID: 1739344296}
+  - component: {fileID: 1739344298}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -30644,6 +30660,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1739344294}
+--- !u!114 &1739344298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1739344294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.27843142, b: 0.6516566, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1740967059
 Prefab:
   m_ObjectHideFlags: 0
@@ -33466,6 +33496,7 @@ GameObject:
   - component: {fileID: 1916276933}
   - component: {fileID: 1916276935}
   - component: {fileID: 1916276934}
+  - component: {fileID: 1916276936}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -33524,6 +33555,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1916276932}
+--- !u!114 &1916276936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1916276932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.27843142, b: 0.6516566, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1923569032
 GameObject:
   m_ObjectHideFlags: 0
@@ -34481,12 +34526,13 @@ Transform:
   m_Children:
   - {fileID: 1735793679}
   - {fileID: 1559465189}
-  - {fileID: 664928405}
+  - {fileID: 705319317}
   - {fileID: 17991867}
   - {fileID: 1393540641}
   - {fileID: 1213051519}
   - {fileID: 1617242574}
   - {fileID: 604304861}
+  - {fileID: 664928405}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
