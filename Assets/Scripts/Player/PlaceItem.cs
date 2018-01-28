@@ -8,15 +8,25 @@ public class PlaceItem : MonoBehaviour
 {
   public GameObject[] defenseItem;
   public string[] defenseItemNames;
-
-  public int maxItems = 5;
+  public int[] defenseItemCounts;
 
   public bool canPlaceItem;
 
   int currentItemIdx = 0;
   PlayerController player;
 
-  int itemCount = 0;
+  public int CurrentItemIdx
+  {
+    get
+    {
+      return currentItemIdx;
+    }
+
+    set
+    {
+      currentItemIdx = value;
+    }
+  }
 
   void Start()
   {
@@ -27,22 +37,17 @@ public class PlaceItem : MonoBehaviour
   {
     if (Input.GetButtonDown("Jump"))
     {
-      currentItemIdx = (currentItemIdx + 1) % defenseItem.Length;
+      CurrentItemIdx = (CurrentItemIdx + 1) % defenseItem.Length;
     }
 
     if (canPlaceItem)
     {
       if (Input.GetButtonDown("Fire2"))
       {
-        if (itemCount < maxItems)
+        if (defenseItemCounts[CurrentItemIdx] > 0)
         {
-          PlaceDefenseItem(defenseItem[currentItemIdx]);
-          itemCount++;
-        }
-
-        if (itemCount == maxItems)
-        {
-          print("no more items can be placed");
+          PlaceDefenseItem(defenseItem[CurrentItemIdx]);
+          defenseItemCounts[CurrentItemIdx]--;
         }
       }
     }

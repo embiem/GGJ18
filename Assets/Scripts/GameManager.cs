@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
   public AudioSource AudioPlayerDied;
   public AudioSource AudioAllTransmissionTowersDestroyed;
   public AudioSource AudioSuccessful;
+  public AudioSource AudioPlayerDeath;
 
 
   private int curLevelIndex = 0;
@@ -176,7 +177,14 @@ public class GameManager : MonoBehaviour
     {
       this.GameOverReason = "You died!";
       this.GameOver = true;
-      AudioPlayerDied.Play();
+      AudioPlayerDeath.Play();
+            StartCoroutine("PlayDelayedSound");
     }
   }
+
+    IEnumerator PlayDelayedSound()
+    {
+        yield return new WaitForSeconds(1f);
+        AudioPlayerDied.Play();
+    }
 }
