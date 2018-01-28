@@ -9836,6 +9836,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 82525392133129632, guid: 8b2a5d2b90f25a847b30f3e5c46fd8b9,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82525392133129632, guid: 8b2a5d2b90f25a847b30f3e5c46fd8b9,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bb6c51bb0a3fcd145884c6c004e5a830, type: 3}
+    - target: {fileID: 82525392133129632, guid: 8b2a5d2b90f25a847b30f3e5c46fd8b9,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b2a5d2b90f25a847b30f3e5c46fd8b9, type: 2}
   m_IsPrefabParent: 0
