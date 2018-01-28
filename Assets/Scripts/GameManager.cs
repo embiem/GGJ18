@@ -148,7 +148,8 @@ public class GameManager : MonoBehaviour
       instance = this;
       DontDestroyOnLoad(this.gameObject);
 
-      if (SceneManager.GetActiveScene().name.ToLower() != "menu") {
+      if (SceneManager.GetActiveScene().name.ToLower() != "menu")
+      {
         AudioStartingSoon.Play();
         TransmissionTowerCount = FindObjectsOfType<TransmissionTower>().Length;
       }
@@ -168,6 +169,12 @@ public class GameManager : MonoBehaviour
     this.GameOver = false;
     this.playedTenSecAudio = false;
     this.playedStartNowAudio = false;
+    StartCoroutine(AfterLevelLoadHandler());
+  }
+
+  IEnumerator AfterLevelLoadHandler()
+  {
+    yield return new WaitForSeconds(1.0f);
     AudioStartingSoon.Play();
     TransmissionTowerCount = FindObjectsOfType<TransmissionTower>().Length;
   }
@@ -196,13 +203,13 @@ public class GameManager : MonoBehaviour
       this.GameOverReason = "You died!";
       this.GameOver = true;
       AudioPlayerDeath.Play();
-            StartCoroutine("PlayDelayedSound");
+      StartCoroutine("PlayDelayedSound");
     }
   }
 
-    IEnumerator PlayDelayedSound()
-    {
-        yield return new WaitForSeconds(1f);
-        AudioPlayerDied.Play();
-    }
+  IEnumerator PlayDelayedSound()
+  {
+    yield return new WaitForSeconds(1f);
+    AudioPlayerDied.Play();
+  }
 }

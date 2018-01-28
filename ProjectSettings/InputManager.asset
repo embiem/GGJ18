@@ -7,8 +7,8 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: Horizontal
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: Move Left
+    descriptiveNegativeName: Move Right
     negativeButton: left
     positiveButton: right
     altNegativeButton: a
@@ -23,8 +23,8 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical
-    descriptiveName: 
-    descriptiveNegativeName: 
+    descriptiveName: Move Up
+    descriptiveNegativeName: Move Down
     negativeButton: down
     positiveButton: up
     altNegativeButton: s
@@ -39,7 +39,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
-    descriptiveName: 
+    descriptiveName: Fire Laser-Gun
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left ctrl
@@ -55,7 +55,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire2
-    descriptiveName: 
+    descriptiveName: Place Turret/Trap
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left alt
@@ -87,7 +87,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Jump
-    descriptiveName: 
+    descriptiveName: Switch Turret/Trap
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space
