@@ -39,7 +39,7 @@ public class InstallmentSelectorUI : MonoBehaviour
 			this.ActivePositionIdx = placeItem.CurrentItemIdx;
 		}
 
-		timeBucket += Time.deltaTime;
+		timeBucket += Time.deltaTime * 2f;
 
 		myRect.anchoredPosition = new Vector2(
 			myRect.anchoredPosition.x,
