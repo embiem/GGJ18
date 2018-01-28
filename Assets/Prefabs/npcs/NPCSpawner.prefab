@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1981434224312518}
+  m_IsPrefabParent: 1
+--- !u!1 &1981434224312518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4142576883984734}
+  - component: {fileID: 114952676590648606}
+  m_Layer: 0
+  m_Name: NPCSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4142576883984734
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981434224312518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2647343, y: 3.5740523, z: 10.022646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114952676590648606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981434224312518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4628811406e2cfc40bdede4d024fe787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsLeftSpawn: 1
+  TargetXPos: 0
+  AnimationSpeed: 2
+  SpawnEveryXSeconds: 9
+  SpawnRandomRange: {x: -2, y: 2}
+  LeftPrefabs:
+  - {fileID: 1854492725326370, guid: d1934f7adcef10244a6945717f358fd8, type: 2}
+  - {fileID: 1737597458106244, guid: 82d4e6a65f7d28a4aa4691406d714a76, type: 2}
+  - {fileID: 1825845192830200, guid: 93666fae05b9f4b4e81f80fbb892c027, type: 2}
+  - {fileID: 1659747410112790, guid: fb8ff7f2fe3527640a4ec7d8cee0b5f7, type: 2}
+  RightPrefabs:
+  - {fileID: 1302356138438784, guid: 36cb353a299f60e478918bb51884ecbc, type: 2}
+  - {fileID: 1327150488437806, guid: 253e76ac3dc198e4c8e814801774c953, type: 2}
+  - {fileID: 1819688631959410, guid: 2cb37ad91e5c354418b3b10ea25430ac, type: 2}
+  - {fileID: 1923235609745796, guid: ae11d97389622e54c8147c8d9933f0f2, type: 2}
