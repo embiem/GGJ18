@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
   [Header("Refs")]
   public Projectile ProjectilePrefab;
   public GameObject DeathAnimPrefab;
+  public AudioClip DeathAudio;
 
   NavMeshAgent agent;
   PlayerController player;
@@ -150,6 +151,7 @@ public class Enemy : MonoBehaviour
 
   private void OnDeath()
   {
+    AudioSource.PlayClipAtPoint(DeathAudio, transform.position);
     Instantiate(DeathAnimPrefab, transform.position, Quaternion.identity);
     Destroy(this.gameObject);
   }

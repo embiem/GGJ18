@@ -14,6 +14,7 @@ public class Turret : Installment
   public float projectileRange = 20f;
 
   public Projectile projectile;
+  public GameObject laser;
 
   [Header("Rotation")]
   public GameObject parent;
@@ -30,6 +31,7 @@ public class Turret : Installment
   {
     base.Start();
     StartCoroutine(CheckForTarget());
+    laser.SetActive(false);
   }
 
   IEnumerator CheckForTarget()
@@ -48,6 +50,10 @@ public class Turret : Installment
 
     if (currentTarget != null)
     {
+      if (!laser.activeSelf)
+      {
+        laser.SetActive(true);
+      }
       // Rotate
       Vector3 v3T = currentTarget.transform.position - parent.transform.position;
       v3T.y = parent.transform.position.y;
@@ -67,6 +73,10 @@ public class Turret : Installment
           }
         }
       }
+    }
+    else
+    {
+      laser.SetActive(false);
     }
   }
 
