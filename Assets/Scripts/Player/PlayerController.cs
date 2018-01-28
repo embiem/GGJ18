@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
   public Sprite[] DirectionalSpritesRight;
   public Sprite[] DirectionalSpritesFront;
   public Sprite[] DirectionalSpritesBack;
+  public GameObject GunLeft;
+  public GameObject GunRight;
+  public GameObject GunFront;
+  public GameObject GunBack;
   public Animator MeleeWeapon;
 
   [Header("Prefabs")]
@@ -99,14 +103,32 @@ public class PlayerController : MonoBehaviour
 
     if (didHit)
     {
-      Laser.SetPosition(0, transform.position + Vector3.up * 0.5f);
       Laser.SetPosition(1, transform.position + Vector3.up * 0.5f + direction * LaserLength);
 
       if (Input.GetButtonDown("Fire1") && Time.time - this.lastProjectileTime > projectileCooldown)
       {
+        var curLookDir = this.GetCurrentLookDirection();
+        var spawnPos = transform.position + CharacterController.center + direction * projectileSpawnOffset;
+
+        switch (curLookDir)
+        {
+          case E_LOOK_DIRECTION.BACK:
+            spawnPos = GunBack.transform.GetChild(0).transform.position + direction * projectileSpawnOffset;
+            break;
+          case E_LOOK_DIRECTION.LEFT:
+            spawnPos = GunLeft.transform.GetChild(0).transform.position + direction * projectileSpawnOffset;
+            break;
+          case E_LOOK_DIRECTION.RIGHT:
+            spawnPos = GunRight.transform.GetChild(0).transform.position + direction * projectileSpawnOffset;
+            break;
+          default:
+            spawnPos = GunFront.transform.GetChild(0).transform.position + direction * projectileSpawnOffset;
+            break;
+        }
+
         var projectile = GameObject.Instantiate(
           ProjectilePrefab,
-          transform.position + CharacterController.center + direction * projectileSpawnOffset,
+          spawnPos,
           Quaternion.LookRotation(direction, Vector3.up)
         );
         projectile.GetComponent<Projectile>().Fire(direction, projectileSpeed);
@@ -131,10 +153,38 @@ public class PlayerController : MonoBehaviour
     var currentSprites = DirectionalSpritesFront;
     switch (currentLookDirection)
     {
-      case E_LOOK_DIRECTION.BACK: currentSprites = DirectionalSpritesBack; break;
-      case E_LOOK_DIRECTION.RIGHT: currentSprites = DirectionalSpritesRight; break;
-      case E_LOOK_DIRECTION.LEFT: currentSprites = DirectionalSpritesLeft; break;
-      default: currentSprites = DirectionalSpritesFront; break;
+      case E_LOOK_DIRECTION.BACK:
+        currentSprites = DirectionalSpritesBack;
+        Laser.SetPosition(0, GunBack.transform.GetChild(0).transform.position);
+        GunBack.SetActive(true);
+        GunFront.SetActive(false);
+        GunRight.SetActive(false);
+        GunLeft.SetActive(false);
+        break;
+      case E_LOOK_DIRECTION.RIGHT:
+        currentSprites = DirectionalSpritesRight;
+        Laser.SetPosition(0, GunRight.transform.GetChild(0).transform.position);
+        GunBack.SetActive(false);
+        GunFront.SetActive(false);
+        GunRight.SetActive(true);
+        GunLeft.SetActive(false);
+        break;
+      case E_LOOK_DIRECTION.LEFT:
+        currentSprites = DirectionalSpritesLeft;
+        Laser.SetPosition(0, GunLeft.transform.GetChild(0).transform.position);
+        GunBack.SetActive(false);
+        GunFront.SetActive(false);
+        GunRight.SetActive(false);
+        GunLeft.SetActive(true);
+        break;
+      default:
+        currentSprites = DirectionalSpritesFront;
+        Laser.SetPosition(0, GunFront.transform.GetChild(0).transform.position);
+        GunBack.SetActive(false);
+        GunFront.SetActive(true);
+        GunRight.SetActive(false);
+        GunLeft.SetActive(false);
+        break;
     }
     if (Mathf.Abs(moveDirection.x) > 0 || Mathf.Abs(moveDirection.z) > 0)
     {
