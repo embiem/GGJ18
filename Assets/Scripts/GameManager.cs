@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
   private bool playedTenSecAudio = false;
   private bool playedStartNowAudio = false;
   private float transmissionPoints = 0;
+  private int transmissionTowerCount = 0;
   private bool gameOver = false;
   private string gameOverReason = "";
 
@@ -127,6 +128,19 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public int TransmissionTowerCount
+  {
+    get
+    {
+      return transmissionTowerCount;
+    }
+
+    set
+    {
+      transmissionTowerCount = value;
+    }
+  }
+
   void Start()
   {
     if (!instance)
@@ -136,6 +150,7 @@ public class GameManager : MonoBehaviour
 
       if (SceneManager.GetActiveScene().name.ToLower() != "menu") {
         AudioStartingSoon.Play();
+        TransmissionTowerCount = FindObjectsOfType<TransmissionTower>().Length;
       }
     }
     else
@@ -154,11 +169,13 @@ public class GameManager : MonoBehaviour
     this.playedTenSecAudio = false;
     this.playedStartNowAudio = false;
     AudioStartingSoon.Play();
+    TransmissionTowerCount = FindObjectsOfType<TransmissionTower>().Length;
   }
 
   public void OnTransmissionTowerDestroyed()
   {
     AudioTowerDestroyed.Play();
+    TransmissionTowerCount--;
   }
 
   public void OnAllTransmissionTowersDied()
@@ -168,6 +185,7 @@ public class GameManager : MonoBehaviour
       this.GameOverReason = "All transmission towers destroyed!";
       this.GameOver = true;
       AudioAllTransmissionTowersDestroyed.Play();
+      TransmissionTowerCount = 0;
     }
   }
 

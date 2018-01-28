@@ -1155,7 +1155,7 @@ MonoBehaviour:
   - level1
   LevelSecondsToPrepare: 32000000
   LevelTransmissionPointsToWin:
-  - 350
+  - 500
   AudioStartingSoon: {fileID: 82630130573786376}
   AudioStartingTenSec: {fileID: 82614865988289262}
   AudioStartingNow: {fileID: 82555735250660390}
