@@ -8,6 +8,7 @@ public class TransmissionUI : MonoBehaviour
   public RectTransform MaskController;
   public Text StatusText;
   public Text PercentageText;
+  public Text TransTowerCountText;
   public Vector2 MaskMinMax;
 
   private bool flippedStatusText = false;
@@ -20,6 +21,8 @@ public class TransmissionUI : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    TransTowerCountText.text = "x " + GameManager.instance.TransmissionTowerCount;
+
     if (GameManager.instance.RemainingSecondsToPrepare > 0)
     {
       var lerpedVal = Mathf.Lerp(MaskMinMax.x, MaskMinMax.y, Mathf.Abs(Mathf.Sin(Time.time)));
