@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trap : Installment
 {
   public Animator explosion;
+  public AudioClip AudioExplosion;
 
   public GameObject thisObject;
 
@@ -43,6 +44,7 @@ public class Trap : Installment
     }
 
     this.explosion.Play("Expl");
+    AudioSource.PlayClipAtPoint(AudioExplosion, transform.position);
 
     if (col != null)
       col.enabled = false;

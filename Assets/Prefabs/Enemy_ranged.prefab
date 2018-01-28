@@ -131,6 +131,7 @@ MonoBehaviour:
     type: 2}
   DeathAnimPrefab: {fileID: 1155563595510158, guid: a12e3df7ef688604196fa9af8c0d2e4d,
     type: 2}
+  DeathAudio: {fileID: 8300000, guid: 9118d542f72d7a64fbfe40988b789101, type: 3}
 --- !u!136 &136210049903015526
 CapsuleCollider:
   m_ObjectHideFlags: 1

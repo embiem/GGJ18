@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
   private float spriteAnimIdx = 0;
   private float lastMeleeTime = 0.0f;
   private float lastProjectileTime = 0.0f;
+  private int startingHealth = 0;
+
 
   public Vector3 LookDirection
   {
@@ -64,8 +66,22 @@ public class PlayerController : MonoBehaviour
     }
   }
 
+  public int StartingHealth
+  {
+    get
+    {
+      return startingHealth;
+    }
+
+    set
+    {
+      startingHealth = value;
+    }
+  }
+
   void Start()
   {
+    this.startingHealth = Health;
   }
 
   // Update is called once per frame

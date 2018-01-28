@@ -306,6 +306,7 @@ MonoBehaviour:
   projectileRange: 20
   projectile: {fileID: 114016748995387914, guid: d03e692174e82964fa578c71cc27fbc9,
     type: 2}
+  laser: {fileID: 1154867120833670}
   parent: {fileID: 1762482329300558}
   maxDegreesPerSecond: 180
 --- !u!136 &136635094051075474

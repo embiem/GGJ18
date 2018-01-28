@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyShouldIgnore: 1
   explosion: {fileID: 95326057093099182}
+  AudioExplosion: {fileID: 8300000, guid: e26a056bb2ab9cd4788bfeb232cd0bb9, type: 3}
   thisObject: {fileID: 1229576974970834}
 --- !u!135 &135848865267785282
 SphereCollider:
