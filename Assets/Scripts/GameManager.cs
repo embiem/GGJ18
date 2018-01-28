@@ -78,6 +78,14 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public float TransmissionProgress
+  {
+    get
+    {
+      return 1.0f * TransmissionPoints / LevelTransmissionPointsToWin[CurLevelIndex];
+    }
+  }
+
   public bool GameOver
   {
     get
